@@ -63,10 +63,10 @@ const formats = [
 
 export function WhatWeDo() {
   return (
-    <section id="formats" className="bg-white py-16 lg:py-24">
-      <div className="max-w-[1341px] mx-auto px-5 sm:px-10 lg:px-[208px]">
+    <section id="formats" className="bg-white py-14 lg:py-24">
+      <div className="max-w-[1341px] mx-auto px-[38px] sm:px-10 lg:px-[120px]">
         <div className="max-w-[925px]">
-          <h2 className="font-display font-bold text-dark text-3xl lg:text-[36px] leading-10 mb-10 lg:mb-12">
+          <h2 className="font-display font-bold text-dark text-[28px] leading-[1.2] lg:text-[36px] lg:leading-10 mb-8 lg:mb-12">
             Форматы и направления
           </h2>
 
@@ -80,10 +80,10 @@ export function WhatWeDo() {
                   <item.Icon />
                 </div>
                 <div className="flex flex-col gap-2">
-                  <p className="font-display font-normal text-dark text-[20px] leading-7">
+                  <p className="font-display font-normal text-dark text-[17px] leading-[1.3] lg:text-[20px] lg:leading-7">
                     {item.title}
                   </p>
-                  <p className="font-sans text-muted text-[14px] leading-5">
+                  <p className="font-sans text-muted text-[13px] leading-[1.4] lg:text-[14px] lg:leading-5">
                     {item.subtitle}
                   </p>
                 </div>

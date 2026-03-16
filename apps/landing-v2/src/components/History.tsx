@@ -8,17 +8,17 @@ const historyParagraphs = [
 
 export function History() {
   return (
-    <section id="history" className="bg-white py-16 lg:py-24">
-      <div className="max-w-[1341px] mx-auto px-5 sm:px-10 lg:px-[182px]">
+    <section id="history" className="bg-white py-14 lg:py-24">
+      <div className="max-w-[1341px] mx-auto px-[38px] sm:px-10 lg:px-[120px]">
         <div className="max-w-[976px]">
-          <h2 className="font-display font-bold text-dark text-3xl lg:text-[36px] leading-10 uppercase mb-8 lg:mb-10">
+          <h2 className="font-display font-bold text-dark text-3xl lg:text-[36px] leading-[1.2] lg:leading-10 uppercase mb-7 lg:mb-10">
             История
           </h2>
-          <div className="flex flex-col gap-5 lg:gap-6">
+          <div className="flex flex-col gap-4 lg:gap-6">
             {historyParagraphs.map((text, i) => (
               <p
                 key={i}
-                className="font-sans text-muted text-base lg:text-[18px] leading-7"
+                className="font-sans text-muted text-[15px] leading-[1.5] lg:text-[18px] lg:leading-7"
               >
                 {text}
               </p>

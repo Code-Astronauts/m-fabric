@@ -2,7 +2,7 @@
 
 import Image from "next/image";
 import Link from "next/link";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
 const navItems = [
   { label: "О нас", href: "#about" },
@@ -13,13 +13,26 @@ const navItems = [
 
 export function Header() {
   const [mobileOpen, setMobileOpen] = useState(false);
+  const [scrolled, setScrolled] = useState(false);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      setScrolled(window.scrollY > 20);
+    };
+    window.addEventListener("scroll", handleScroll, { passive: true });
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
 
   return (
     <header
       id="header"
-      className="sticky top-0 z-50 bg-navy border-b border-white/10"
+      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
+        scrolled
+          ? "bg-navy/95 backdrop-blur-md border-b border-white/10 shadow-lg shadow-navy/20"
+          : "bg-transparent border-b border-transparent"
+      }`}
     >
-      <div className="max-w-[1341px] mx-auto px-5 sm:px-10 lg:px-20 flex items-center justify-between h-[72px] lg:h-[112px]">
+      <div className="max-w-[1341px] mx-auto px-[38px] sm:px-10 lg:px-12 flex items-center justify-between h-[72px] lg:h-[96px]">
         {/* Logo */}
         <Link href="/" className="shrink-0">
           <Image
@@ -27,7 +40,7 @@ export function Header() {
             alt="М-фабрика детского контента"
             width={70}
             height={58}
-            className="h-10 lg:h-[58px] w-auto"
+            className="h-10 lg:h-[52px] w-auto"
             priority
           />
         </Link>
@@ -73,7 +86,7 @@ export function Header() {
 
       {/* Mobile menu */}
       {mobileOpen && (
-        <div className="md:hidden bg-navy border-t border-white/10 px-5 pb-6 flex flex-col gap-2">
+        <div className="md:hidden bg-navy/95 backdrop-blur-md border-t border-white/10 px-[38px] pb-6 flex flex-col gap-2">
           {navItems.map((item) => (
             <Link
               key={item.label}

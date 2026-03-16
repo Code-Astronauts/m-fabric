@@ -19,17 +19,17 @@ function AudienceCard({
   category: string;
 }) {
   return (
-    <div className="border border-accent-grey rounded-xl p-8 flex flex-col gap-6">
-      <h3 className="font-display font-bold text-dark text-2xl leading-8">
+    <div className="border border-accent-grey rounded-xl p-6 lg:p-8 flex flex-col gap-5 lg:gap-6">
+      <h3 className="font-display font-bold text-dark text-[22px] leading-[1.2] lg:text-2xl lg:leading-8">
         {category}
       </h3>
-      <div className="flex flex-col gap-5">
+      <div className="flex flex-col gap-4 lg:gap-5">
         {groups.map((g) => (
-          <div key={g.title} className="flex flex-col gap-1">
-            <p className="font-display font-semibold text-dark text-[18px] leading-7">
+          <div key={g.title} className="flex flex-col gap-0.5">
+            <p className="font-display font-semibold text-dark text-[16px] leading-[1.4] lg:text-[18px] lg:leading-7">
               {g.title}
             </p>
-            <p className="font-sans text-muted text-[14px] leading-5">
+            <p className="font-sans text-muted text-[13px] leading-[1.4] lg:text-[14px] lg:leading-5">
               {g.subtitle}
             </p>
           </div>
@@ -41,21 +41,21 @@ function AudienceCard({
 
 export function Audience() {
   return (
-    <section id="audience" className="bg-white py-16 lg:py-24">
-      <div className="max-w-[1341px] mx-auto px-5 sm:px-10 lg:px-[208px]">
+    <section id="audience" className="bg-white py-14 lg:py-24">
+      <div className="max-w-[1341px] mx-auto px-[38px] sm:px-10 lg:px-[120px]">
         <div className="max-w-[925px]">
           {/* Label */}
-          <p className="font-sans text-brand-blue text-[14px] leading-5 tracking-[1.4px] uppercase mb-5">
+          <p className="font-sans text-brand-blue text-[13px] leading-[1.4] tracking-[1.4px] uppercase mb-4 lg:mb-5">
             Аудитория
           </p>
 
           {/* Heading */}
-          <h2 className="font-display font-bold text-dark text-3xl lg:text-[36px] leading-10 mb-10 lg:mb-12">
+          <h2 className="font-display font-bold text-dark text-[28px] leading-[1.2] lg:text-[36px] lg:leading-10 mb-8 lg:mb-12">
             Для кого мы работаем
           </h2>
 
           {/* Cards */}
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-5 lg:gap-6">
             <AudienceCard category="B2C · Зрители" groups={b2cGroups} />
             <AudienceCard category="B2B · Партнёры" groups={b2bGroups} />
           </div>

@@ -3,8 +3,8 @@ import Link from "next/link";
 
 export function Contacts() {
   return (
-    <section id="contacts" className="bg-navy py-16 lg:py-24">
-      <div className="max-w-[1341px] mx-auto px-5 sm:px-10 lg:px-[208px]">
+    <section id="contacts" className="bg-navy py-14 lg:py-24">
+      <div className="max-w-[1341px] mx-auto px-[38px] sm:px-10 lg:px-[120px]">
         <div className="max-w-[925px] flex flex-col lg:flex-row gap-12 lg:gap-20 items-start">
           {/* Logo column */}
           <div className="hidden lg:block shrink-0">
@@ -19,7 +19,7 @@ export function Contacts() {
 
           {/* Contact info */}
           <div className="flex flex-col gap-8">
-            <h2 className="font-display font-bold text-white text-3xl lg:text-[30px] leading-9">
+            <h2 className="font-display font-bold text-white text-[26px] leading-[1.15] lg:text-[30px] lg:leading-9">
               Свяжитесь с нами
             </h2>
 

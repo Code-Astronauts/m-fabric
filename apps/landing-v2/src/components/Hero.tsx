@@ -6,7 +6,7 @@ export function Hero() {
     <section
       id="hero"
       className="relative bg-navy overflow-hidden"
-      style={{ minHeight: "560px" }}
+      style={{ minHeight: "600px" }}
     >
       {/* Background image */}
       <div className="absolute inset-0 pointer-events-none">
@@ -22,20 +22,20 @@ export function Hero() {
         <div className="absolute inset-0 bg-navy/60" />
       </div>
 
-      {/* Content */}
-      <div className="relative z-10 max-w-[1341px] mx-auto px-5 sm:px-10 lg:px-20 pt-24 pb-20 lg:pt-[200px] lg:pb-[140px] flex flex-col lg:flex-row items-start gap-10 lg:gap-16">
+      {/* Content — pt-[72px] on mobile (header height), pt-[96px] on desktop */}
+      <div className="relative z-10 max-w-[1341px] mx-auto px-[38px] sm:px-10 lg:px-12 pt-[96px] pb-16 lg:pt-[160px] lg:pb-[120px] flex flex-col lg:flex-row items-center gap-10 lg:gap-0">
         {/* Left: text */}
-        <div className="flex-1 flex flex-col gap-6 max-w-[612px]">
-          <div className="flex flex-col gap-3">
-            <h1 className="font-display font-bold text-white text-4xl sm:text-5xl lg:text-[60px] leading-[1.1]">
+        <div className="flex-1 flex flex-col gap-5 lg:gap-6 max-w-[580px]">
+          <div className="flex flex-col gap-2">
+            <h1 className="font-display font-bold text-white text-[36px] leading-[1.1] sm:text-5xl lg:text-[60px]">
               М_фабрика детского контента
             </h1>
-            <p className="font-sans font-normal text-accent-grey text-lg lg:text-[20px] leading-7">
+            <p className="font-sans font-normal text-accent-grey text-base lg:text-[20px] leading-[1.4] lg:leading-7">
               Продюсерский центр
             </p>
           </div>
 
-          <p className="font-sans text-accent-grey/90 text-base lg:text-[20px] leading-7 max-w-[600px]">
+          <p className="font-sans text-accent-grey/90 text-[15px] leading-[1.5] lg:text-[20px] lg:leading-7 max-w-[580px]">
             М_фабрика детского контента — продюсерский центр на пересечении
             классического наследия и современного театра. Мы создаём масштабные
             шоу и культурные проекты на основе литературного наследия, сильных
@@ -43,7 +43,7 @@ export function Hero() {
             детям и значимы для взрослых.
           </p>
 
-          <div className="flex flex-col sm:flex-row gap-3 pt-2">
+          <div className="flex flex-col sm:flex-row gap-3 pt-1">
             <Link
               href="#partnership"
               className="inline-flex items-center justify-center bg-brand-blue text-white font-sans font-medium text-sm px-6 py-3 rounded-xl hover:bg-brand-blue/90 transition-colors"
@@ -60,13 +60,13 @@ export function Hero() {
         </div>
 
         {/* Right: logo card */}
-        <div className="hidden lg:flex shrink-0">
-          <div className="bg-white/10 rounded-3xl p-6 backdrop-blur-sm">
+        <div className="hidden lg:flex shrink-0 ml-auto ml-auto">
+          <div className="bg-white/10 rounded-2xl p-5 backdrop-blur-sm">
             <Image
               src="/images/logo-main.png"
               alt="М_фабрика детского контента логотип"
-              width={281}
-              height={232}
+              width={251}
+              height={281}
               className="object-contain"
             />
           </div>

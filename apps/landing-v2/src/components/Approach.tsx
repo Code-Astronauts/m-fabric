@@ -6,35 +6,35 @@ const paragraphs = [
 
 export function Approach() {
   return (
-    <section id="approach" className="bg-navy py-16 lg:py-24">
-      <div className="max-w-[1341px] mx-auto px-5 sm:px-10 lg:px-[208px]">
+    <section id="approach" className="bg-navy py-14 lg:py-24">
+      <div className="max-w-[1341px] mx-auto px-[38px] sm:px-10 lg:px-[120px]">
         <div className="max-w-[925px]">
           {/* Label */}
-          <p className="font-sans text-label-dark text-[14px] leading-5 tracking-[1.4px] uppercase mb-5">
+          <p className="font-sans text-label-dark text-[13px] leading-[1.4] tracking-[1.4px] uppercase mb-4 lg:mb-5">
             Подход
           </p>
 
           {/* Heading */}
-          <h2 className="font-display font-bold text-white text-3xl lg:text-[36px] leading-10 mb-4">
+          <h2 className="font-display font-bold text-white text-[28px] leading-[1.15] lg:text-[36px] lg:leading-10 mb-3 lg:mb-4">
             Не адаптируем. Переосмысляем.
           </h2>
 
           {/* Tagline */}
-          <div className="flex flex-col gap-1 mb-8 lg:mb-10">
-            <p className="font-sans italic text-light-muted text-base lg:text-[18px] leading-7">
+          <div className="flex flex-col gap-0.5 mb-6 lg:mb-10">
+            <p className="font-sans italic text-light-muted text-[15px] leading-[1.5] lg:text-[18px] lg:leading-7">
               Встроенная аудитория. Сильные смыслы. Масштабируемость.
             </p>
-            <p className="font-sans italic text-light-muted text-base lg:text-[18px] leading-7">
+            <p className="font-sans italic text-light-muted text-[15px] leading-[1.5] lg:text-[18px] lg:leading-7">
               Для больших и маленьких.
             </p>
           </div>
 
           {/* Body paragraphs */}
-          <div className="max-w-[768px] flex flex-col gap-6">
+          <div className="max-w-[768px] flex flex-col gap-4 lg:gap-6">
             {paragraphs.map((text, i) => (
               <p
                 key={i}
-                className="font-sans text-white-warm text-base lg:text-[18px] leading-7"
+                className="font-sans text-white-warm text-[15px] leading-[1.5] lg:text-[18px] lg:leading-7"
               >
                 {text}
               </p>
