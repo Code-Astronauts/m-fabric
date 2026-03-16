@@ -11,16 +11,21 @@ import { Contacts } from "@/components/Contacts";
 
 export default function Home() {
   return (
-    <main className="min-h-screen">
+    <>
+      {/* Header is outside any overflow-x-hidden parent — required for sticky to work */}
       <Header />
-      <Hero />
-      <About />
-      <Projects />
-      <Partnership />
-      <Audience />
-      <Approach />
-      <WhatWeDo />
-      <Contacts />
-    </main>
+
+      {/* Page sections — overflow-x-hidden clips bleeding illustrations */}
+      <main className="min-h-screen overflow-x-hidden">
+        <Hero />
+        <About />
+        <Projects />
+        <Partnership />
+        <Audience />
+        <Approach />
+        <WhatWeDo />
+        <Contacts />
+      </main>
+    </>
   );
 }

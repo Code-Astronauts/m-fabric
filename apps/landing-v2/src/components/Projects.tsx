@@ -31,7 +31,7 @@ export function Projects() {
             Проекты
           </h2>
 
-          <div className="flex flex-col gap-12 lg:gap-20">
+          <div className="flex flex-col align-center gap-12 lg:gap-20">
             {projects.map((project) => (
               <div
                 key={project.id}

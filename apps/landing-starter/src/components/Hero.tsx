@@ -7,24 +7,21 @@ export function Hero() {
       id="hero"
       className="relative bg-blue-900 overflow-hidden px-6 lg:px-10 py-20 sm:py-28 lg:py-[140px]"
     >
-      {/* Decorative vector — fixed size, no stretch */}
+      {/* Decorative vector — anchored top-right, natural aspect, no stretch */}
       <div
-        className="absolute pointer-events-none"
-        style={{
-          right: 0,
-          top: 59,
-          width: 1061,
-          height: "calc(100% - 59px)",
-          overflow: "hidden",
-        }}
+        className="absolute inset-0 pointer-events-none overflow-hidden"
         aria-hidden="true"
       >
+        {/*
+          В Figma вектор: 1061×900px, выровнен по правому краю и верху секции.
+          Мы фиксируем высоту 100% секции, ширина авто — SVG не деформируется.
+        */}
         <Image
           src="/images/hero-vector.svg"
           alt=""
           width={1061}
           height={900}
-          className="absolute top-0 right-0 w-auto h-full max-w-none opacity-90"
+          className="absolute top-[280px] right-[-150px] h-full w-auto max-w-none"
           priority
           unoptimized
         />

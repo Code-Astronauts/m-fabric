@@ -7,18 +7,21 @@ export function Contacts() {
       id="contacts"
       className="relative px-6 lg:px-10 py-16 lg:py-[168px] overflow-hidden"
     >
-      {/* Decorative background vector — fixed size, no stretch */}
+      {/* Decorative vector — bottom-right area, natural aspect ratio */}
       <div
-        className="absolute inset-0 pointer-events-none"
+        className="absolute inset-0 pointer-events-none overflow-hidden"
         aria-hidden="true"
-        style={{ overflow: "hidden" }}
       >
+        {/*
+          В Figma вектор: правая половина, начинается примерно с середины секции.
+          Фиксируем высоту — ширина авто, SVG не деформируется.
+        */}
         <Image
           src="/images/contacts-vector.svg"
           alt=""
-          width={1440}
+          width={900}
           height={800}
-          className="absolute top-0 left-0 w-full h-auto min-h-full object-cover"
+          className="absolute bottom-0 right-0 h-[90%] w-auto max-w-none"
           unoptimized
         />
       </div>
