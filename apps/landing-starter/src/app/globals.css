@@ -1,0 +1,3 @@
+@import "@m-fabric/tailwind-config/globals.css";
+
+@source "../../packages/ui/src/**/*.{ts,tsx}";
