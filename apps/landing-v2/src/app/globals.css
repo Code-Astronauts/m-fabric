@@ -1,0 +1,38 @@
+@import "tailwindcss";
+
+@source "../../../../packages/ui/src/**/*.{ts,tsx}";
+
+@theme {
+  /* ── Brand Colors (from Figma design) ── */
+  --color-navy:        #0b2187;
+  --color-brand-blue:  #305ee8;
+  --color-white-warm:  #fcfbf8;
+  --color-accent-grey: #dadce7;
+
+  /* ── Text Colors ── */
+  --color-dark:        #1d2030;
+  --color-muted:       #73778c;
+  --color-light-muted: #9ca3c9;
+  --color-label-dark:  #d3d5de;
+
+  /* ── Neutral ── */
+  --color-white:       #ffffff;
+
+  /* ── Typography ── */
+  --font-sans:         "Inter", "Segoe UI", Roboto, sans-serif;
+  --font-display:      "Playfair Display", Georgia, serif;
+}
+
+/* ── Global Base ── */
+@layer base {
+  html {
+    scroll-behavior: smooth;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  body {
+    background-color: #ffffff;
+    color: var(--color-dark);
+  }
+}

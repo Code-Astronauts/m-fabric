@@ -55,6 +55,49 @@ importers:
         specifier: ^5.7.0
         version: 5.9.3
 
+  apps/landing-v2:
+    dependencies:
+      '@m-fabric/ui':
+        specifier: workspace:*
+        version: link:../../packages/ui
+      next:
+        specifier: ^15.2.0
+        version: 15.5.12(react-dom@19.2.4(react@19.2.4))(react@19.2.4)
+      react:
+        specifier: ^19.0.0
+        version: 19.2.4
+      react-dom:
+        specifier: ^19.0.0
+        version: 19.2.4(react@19.2.4)
+    devDependencies:
+      '@m-fabric/tailwind-config':
+        specifier: workspace:*
+        version: link:../../packages/tailwind-config
+      '@m-fabric/typescript-config':
+        specifier: workspace:*
+        version: link:../../packages/typescript-config
+      '@tailwindcss/postcss':
+        specifier: ^4.0.0
+        version: 4.2.1
+      '@types/node':
+        specifier: ^22.0.0
+        version: 22.19.15
+      '@types/react':
+        specifier: ^19.0.0
+        version: 19.2.14
+      '@types/react-dom':
+        specifier: ^19.0.0
+        version: 19.2.3(@types/react@19.2.14)
+      postcss:
+        specifier: ^8.5.0
+        version: 8.5.8
+      tailwindcss:
+        specifier: ^4.0.0
+        version: 4.2.1
+      typescript:
+        specifier: ^5.7.0
+        version: 5.9.3
+
   packages/tailwind-config:
     devDependencies:
       tailwindcss:

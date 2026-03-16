@@ -1,3 +1,37 @@
-@import "@m-fabric/tailwind-config/globals.css";
+@import "tailwindcss";
 
-@source "../../packages/ui/src/**/*.{ts,tsx}";
+@source "../../../../packages/ui/src/**/*.{ts,tsx}";
+
+@theme {
+  /* ── Brand Colors (from Figma design) ── */
+  --color-blue-900: #4385F6;
+  --color-blue-800: #528FF7;
+  --color-blue-100: #DBE4FF;
+  --color-blue-50: #DDE4FC;
+  --color-light-blue: #9CC7EE;
+  --color-light-blue-bg: #DBEEFF;
+
+  /* ── Neutral Colors ── */
+  --color-white-300: #F7F8FC;
+  --color-black-800: #171717;
+  --color-grey-700: #555566;
+  --color-grey-500: #888899;
+
+  /* ── Typography ── */
+  --font-sans: "Inter", "Segoe UI", Roboto, sans-serif;
+  --font-display: "Manrope", "Inter", sans-serif;
+}
+
+/* ── Global Base ── */
+@layer base {
+  html {
+    scroll-behavior: smooth;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  body {
+    background-color: #ffffff;
+    color: var(--color-black-800);
+  }
+}
