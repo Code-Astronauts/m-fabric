@@ -21,7 +21,7 @@ export function Hero() {
           alt=""
           width={1061}
           height={900}
-          className="absolute top-[280px] right-[-150px] h-full w-auto max-w-none"
+          className="absolute lg:top-[280px] top-[480px] right-[-150px] h-full w-auto max-w-none"
           priority
           unoptimized
         />
