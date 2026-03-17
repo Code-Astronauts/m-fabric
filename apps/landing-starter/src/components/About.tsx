@@ -34,7 +34,6 @@ export function About() {
             height: 600,
             transform: "rotate(-90deg)",
             transformOrigin: "center center",
-            opacity: 0.5,
           }}
           unoptimized
         />
