@@ -9,32 +9,41 @@ export function About() {
   return (
     <div className="relative">
       {/*
-        Stars illustration:
-        - Figma container: w=805, h=1224, right=0, top=-261
-        - SVG natural size: 1224×805, rotated -90°
-        - To center 1224×805 inside 805×1224 after rotation:
-            top  = (1224 - 805) / 2 = 209.5px
-            left = -(1224 - 805) / 2 = -209.5px
+        Illustrations: rainbow / drop / circle
+        Coordinates derived from Figma node 2155:86 container (x=635, y=963 in section)
+        and child positions within it. Section is overflow-hidden so illustrations
+        that extend beyond right edge are naturally clipped.
       */}
       <div
-        className="hidden lg:block absolute pointer-events-none z-0"
-        style={{ right: 0, top: 0, width: 805, height: 1224, overflow: "hidden" }}
+        className="hidden lg:block absolute pointer-events-none z-0 overflow-hidden"
+        style={{ right: 0, top: 0, bottom: 0, width: 805 }}
         aria-hidden="true"
       >
+        {/* Rainbow / arc (2313:3) — top right */}
         <Image
-          src="/images/illustration-stars.svg"
+          src="/images/illus-rainbow.svg"
           alt=""
-          width={1224}
-          height={600}
-          style={{
-            position: "absolute",
-            top: 500,
-            left: 55,
-            width: 1224,
-            height: 600,
-            transform: "rotate(-90deg)",
-            transformOrigin: "center center",
-          }}
+          width={181}
+          height={161}
+          style={{ position: "absolute", right: "70%", top: 550, transform: "rotate(-50deg)" }}
+          unoptimized
+        />
+        {/* Drop (2313:6) — right, mid-height */}
+        <Image
+          src="/images/illus-drop.svg"
+          alt=""
+          width={164}
+          height={196}
+          style={{ position: "absolute", right: "10%", top: 630, transform: "rotate(-20deg)" }}
+          unoptimized
+        />
+        {/* Circle (2313:9) — right, lower center */}
+        <Image
+          src="/images/illus-circle.svg"
+          alt=""
+          width={298}
+          height={381}
+          style={{ position: "absolute", right: "30%", top: 1000 }}
           unoptimized
         />
       </div>
