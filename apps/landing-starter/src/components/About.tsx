@@ -126,7 +126,7 @@ export function About() {
 
           {/* CTA */}
           <Link
-            href="#"
+            href="#team"
             className="inline-flex items-center bg-blue-800 border border-white/20 text-white-300 font-sans font-medium text-lg lg:text-[21px] px-10 py-5 rounded-xl hover:bg-blue-900 transition-colors self-start"
           >
             Наша команда
