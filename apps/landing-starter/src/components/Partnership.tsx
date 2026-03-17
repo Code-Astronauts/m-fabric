@@ -1,3 +1,5 @@
+import Image from "next/image";
+
 export function Partnership() {
   const partners = [
     {
@@ -19,7 +21,20 @@ export function Partnership() {
   ];
 
   return (
-    <section id="partnership" className="px-6 lg:px-10 py-16 lg:py-20">
+    <section id="partnership" className="relative px-6 lg:px-10 py-16 lg:py-20">
+        <div
+          className="absolute pointer-events-none hidden lg:block"
+          style={{ right: "10%", bottom: "-17%", width: 178, height: 161, transform: "rotate(15deg)", zIndex: -99 }}
+          aria-hidden="true"
+        >
+          <Image
+            src="/images/illus-flower.svg"
+            alt=""
+            fill
+            className="object-contain"
+          />
+        </div>
+
       {/* Header */}
       <div className="flex flex-col lg:flex-row lg:items-start lg:justify-between gap-8 mb-12 lg:mb-16">
         <div className="flex flex-col gap-4 max-w-[676px]">

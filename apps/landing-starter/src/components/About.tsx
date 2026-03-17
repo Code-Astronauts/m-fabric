@@ -132,6 +132,20 @@ export function About() {
             Наша команда
           </Link>
         </div>
+
+          {/* Illustration: asterisk (2287-9) — left side, near cards */}
+          <div
+              className="absolute pointer-events-none hidden lg:block"
+              style={{ left: "34%", top: "80%", width: 145, height: 148, zIndex: -99 }}
+              aria-hidden="true"
+          >
+              <Image
+                  src="/images/illus-asterisk.svg"
+                  alt=""
+                  fill
+                  className="object-contain"
+              />
+          </div>
       </section>
     </div>
   );

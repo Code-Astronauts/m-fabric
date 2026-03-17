@@ -63,7 +63,7 @@ function ProjectCard({ label, title, description, imageSrc, links }: ProjectCard
 
 export function Projects() {
   return (
-    <section id="projects" className="px-6 lg:px-10 py-16 lg:py-20">
+    <section id="projects" className="relative overflow-hidden px-6 lg:px-10 py-16 lg:py-20">
       {/* Project 1: Stepa */}
       <ProjectCard
         label="Проекты"
@@ -76,6 +76,20 @@ export function Projects() {
           { label: "Открыть слайд-шоу", href: "#", variant: "outline" },
         ]}
       />
+
+      {/* Illustration: cloud (2287-2) — between projects, rotated */}
+      <div
+        className="absolute pointer-events-none hidden lg:block"
+        style={{ right: "30%", top: "60%", width: 201, height: 175, transform: "translateY(-50%) rotate(17.95deg)", zIndex: -99 }}
+        aria-hidden="true"
+      >
+        <Image
+          src="/images/illus-cloud.svg"
+          alt=""
+          fill
+          className="object-contain"
+        />
+      </div>
 
       {/* Separator */}
       <hr className="my-12 lg:my-16 border-t border-black/8" />
