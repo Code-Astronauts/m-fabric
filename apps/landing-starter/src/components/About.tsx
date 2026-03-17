@@ -25,13 +25,13 @@ export function About() {
           src="/images/illustration-stars.svg"
           alt=""
           width={1224}
-          height={805}
+          height={600}
           style={{
             position: "absolute",
             top: 500,
             left: 55,
             width: 1224,
-            height: 805,
+            height: 600,
             transform: "rotate(-90deg)",
             transformOrigin: "center center",
             opacity: 0.5,

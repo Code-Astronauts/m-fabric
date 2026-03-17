@@ -20,7 +20,7 @@ export function Team() {
           controls
           preload="metadata"
           playsInline
-          poster="/images/team-video-poster.jpg"
+          poster="/images/team-video-poster.png"
         >
           <source src="/videos/m_fabric_video.mp4" type="video/mp4" />
           Ваш браузер не поддерживает воспроизведение видео.
