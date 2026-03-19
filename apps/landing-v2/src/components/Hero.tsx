@@ -1,5 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
+import WaveHero from "@/components/WaveHero";
 
 export function Hero() {
   return (
@@ -8,19 +9,17 @@ export function Hero() {
       className="relative bg-navy overflow-hidden"
       style={{ minHeight: "600px" }}
     >
-      {/* Background image */}
-      <div className="absolute inset-0 pointer-events-none">
-        <Image
+      {/* Background — WaveHero canvas */}
+      <div className="absolute inset-0 pointer-events-none z-0">
+        <WaveHero
           src="/images/hero-bg.png"
-          alt=""
-          fill
-          className="object-cover object-center"
-          priority
-          aria-hidden="true"
+          amplitudeScale={1.5}
+          riseRate={0.06}
+          fallRate={0.01}
         />
-        {/* Overlay */}
-        <div className="absolute inset-0 bg-navy/60" />
       </div>
+      {/* Overlay */}
+      <div className="absolute inset-0 bg-navy/60 pointer-events-none z-0" />
 
       {/* Content — pt-[72px] on mobile (header height), pt-[96px] on desktop */}
       <div className="relative z-10 max-w-[1341px] mx-auto px-[38px] sm:px-10 lg:px-12 pt-[96px] pb-16 lg:pt-[160px] lg:pb-[120px] flex flex-col lg:flex-row items-center gap-10 lg:gap-0">
