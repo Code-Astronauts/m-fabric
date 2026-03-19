@@ -12,8 +12,8 @@ export function Hero() {
       {/* Background — WaveHero canvas */}
       <div className="absolute inset-0 pointer-events-none z-0">
         <WaveHero
-          src="/images/hero-bg.png"
-          amplitudeScale={1.5}
+          src="/images/hero-bg.jpg"
+          amplitudeScale={1}
           riseRate={0.06}
           fallRate={0.01}
         />
