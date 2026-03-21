@@ -16,7 +16,7 @@ export function About() {
             />
         </div>
 
-      <div className="max-w-[1341px] mx-auto px-[38px] sm:px-10 lg:px-[120px]">
+      <div className="relative z-10 max-w-[1341px] mx-auto px-[38px] sm:px-10 lg:px-[120px]">
         <div className="max-w-[925px]">
           {/* Label */}
           <p className="font-sans text-label-dark text-[13px] leading-[1.4] tracking-[1.4px] uppercase mb-4 lg:mb-5">
