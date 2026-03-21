@@ -23,6 +23,29 @@
   --font-display:      "Playfair Display", Georgia, serif;
 }
 
+/* ── Illustration animations ── */
+@keyframes illus-float {
+  0%, 100% { transform: translateY(0px); }
+  50%       { transform: translateY(-14px); }
+}
+@keyframes illus-spin-slow {
+  from { transform: rotate(0deg); }
+  to   { transform: rotate(360deg); }
+}
+@keyframes illus-pulse-scale {
+  0%, 100% { transform: scale(1); }
+  50%       { transform: scale(1.08); }
+}
+@keyframes illus-sway {
+  0%, 100% { transform: rotate(-7deg); }
+  50%       { transform: rotate(7deg); }
+}
+
+.animate-illus-float  { animation: illus-float 4.5s ease-in-out infinite; }
+.animate-illus-spin   { animation: illus-spin-slow 22s linear infinite; }
+.animate-illus-pulse  { animation: illus-pulse-scale 3.5s ease-in-out infinite; }
+.animate-illus-sway   { animation: illus-sway 5s ease-in-out infinite; }
+
 /* ── Global Base ── */
 @layer base {
   html {

@@ -1,5 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
+import { Reveal } from "@/components/Reveal";
 
 export function Contacts() {
   return (
@@ -7,7 +8,7 @@ export function Contacts() {
       <div className="max-w-[1341px] mx-auto px-[38px] sm:px-10 lg:px-[120px]">
         <div className="max-w-[925px] flex flex-col lg:flex-row gap-12 lg:gap-20 items-start">
           {/* Logo column */}
-          <div className="hidden lg:block shrink-0">
+          <Reveal direction="left" className="hidden lg:block shrink-0">
             <Image
               src="/images/logo.png"
               alt="М_фабрика"
@@ -15,17 +16,16 @@ export function Contacts() {
               height={150}
               className="object-contain opacity-80"
             />
-          </div>
+          </Reveal>
 
           {/* Contact info */}
-          <div className="flex flex-col gap-8">
+          <Reveal delay={100} className="flex flex-col gap-8">
             <h2 className="font-display font-bold text-white text-[26px] leading-[1.15] lg:text-[30px] lg:leading-9">
               Свяжитесь с нами
             </h2>
 
             {/* Email */}
             <div className="flex items-center gap-3">
-              {/* Email icon */}
               <svg
                 width="24"
                 height="24"
@@ -72,7 +72,7 @@ export function Contacts() {
                 Telegram
               </Link>
             </div>
-          </div>
+          </Reveal>
         </div>
       </div>
     </section>

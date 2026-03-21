@@ -1,4 +1,5 @@
 import Image from "next/image";
+import { Reveal } from "@/components/Reveal";
 
 const b2cGroups = [
   { title: "Семьи с детьми", subtitle: "Родители выбирают содержательный досуг" },
@@ -44,36 +45,43 @@ function AudienceCard({
 export function Audience() {
   return (
     <section id="audience" className="relative bg-white py-14 lg:py-24">
-        {/* Illustration: flower — bottom right, outside cards */}
-        <div
-            className="hidden lg:block absolute pointer-events-none z-0"
-            style={{ right: "5%", bottom: 500, width: 178, height: 161, transform: "rotate(15deg)" }}
-            aria-hidden="true"
-        >
-            <Image
-                src="/images/illus-flower.svg"
-                alt=""
-                fill
-                className="object-contain"
-            />
+      {/* Illustration: flower — sways */}
+      <div
+        className="hidden lg:block absolute pointer-events-none z-0"
+        style={{ right: "5%", bottom: 500, width: 178, height: 161 }}
+        aria-hidden="true"
+      >
+        <div className="animate-illus-sway relative w-full h-full">
+          <Image
+            src="/images/illus-flower.svg"
+            alt=""
+            fill
+            className="object-contain"
+          />
         </div>
+      </div>
 
       <div className="max-w-[1341px] mx-auto px-[38px] sm:px-10 lg:px-[120px]">
         <div className="max-w-[925px]">
-          {/* Label */}
-          <p className="font-sans text-brand-blue text-[13px] leading-[1.4] tracking-[1.4px] uppercase mb-4 lg:mb-5">
-            Аудитория
-          </p>
+          <Reveal>
+            <p className="font-sans text-brand-blue text-[13px] leading-[1.4] tracking-[1.4px] uppercase mb-4 lg:mb-5">
+              Аудитория
+            </p>
+          </Reveal>
 
-          {/* Heading */}
-          <h2 className="font-display font-bold text-dark text-[28px] leading-[1.2] lg:text-[36px] lg:leading-10 mb-8 lg:mb-12">
-            Для кого мы работаем
-          </h2>
+          <Reveal delay={100}>
+            <h2 className="font-display font-bold text-dark text-[28px] leading-[1.2] lg:text-[36px] lg:leading-10 mb-8 lg:mb-12">
+              Для кого мы работаем
+            </h2>
+          </Reveal>
 
-          {/* Cards */}
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-5 lg:gap-6">
-            <AudienceCard category="B2C · Зрители" groups={b2cGroups} />
-            <AudienceCard category="B2B · Партнёры" groups={b2bGroups} />
+            <Reveal delay={200}>
+              <AudienceCard category="B2C · Зрители" groups={b2cGroups} />
+            </Reveal>
+            <Reveal delay={320}>
+              <AudienceCard category="B2B · Партнёры" groups={b2bGroups} />
+            </Reveal>
           </div>
         </div>
       </div>

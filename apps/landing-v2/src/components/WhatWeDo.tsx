@@ -1,4 +1,4 @@
-// Simple SVG icons matching the Figma design
+import { Reveal } from "@/components/Reveal";
 
 function IconProject() {
   return (
@@ -66,28 +66,29 @@ export function WhatWeDo() {
     <section id="formats" className="bg-white py-14 lg:py-24">
       <div className="max-w-[1341px] mx-auto px-[38px] sm:px-10 lg:px-[120px]">
         <div className="max-w-[925px]">
-          <h2 className="font-display font-bold text-dark text-[28px] leading-[1.2] lg:text-[36px] lg:leading-10 mb-8 lg:mb-12">
-            Форматы и направления
-          </h2>
+          <Reveal>
+            <h2 className="font-display font-bold text-dark text-[28px] leading-[1.2] lg:text-[36px] lg:leading-10 mb-8 lg:mb-12">
+              Форматы и направления
+            </h2>
+          </Reveal>
 
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 lg:gap-8">
-            {formats.map((item) => (
-              <div
-                key={item.title}
-                className="border border-accent-grey rounded-xl p-6 flex flex-col gap-4 hover:shadow-md transition-shadow"
-              >
-                <div className="w-7 h-7">
-                  <item.Icon />
+            {formats.map((item, i) => (
+              <Reveal key={item.title} delay={i * 90 + 100}>
+                <div className="border border-accent-grey rounded-xl p-6 flex flex-col gap-4 hover:shadow-md transition-shadow h-full">
+                  <div className="w-7 h-7">
+                    <item.Icon />
+                  </div>
+                  <div className="flex flex-col gap-2">
+                    <p className="font-display font-normal text-dark text-[17px] leading-[1.3] lg:text-[20px] lg:leading-7">
+                      {item.title}
+                    </p>
+                    <p className="font-sans text-muted text-[13px] leading-[1.4] lg:text-[14px] lg:leading-5">
+                      {item.subtitle}
+                    </p>
+                  </div>
                 </div>
-                <div className="flex flex-col gap-2">
-                  <p className="font-display font-normal text-dark text-[17px] leading-[1.3] lg:text-[20px] lg:leading-7">
-                    {item.title}
-                  </p>
-                  <p className="font-sans text-muted text-[13px] leading-[1.4] lg:text-[14px] lg:leading-5">
-                    {item.subtitle}
-                  </p>
-                </div>
-              </div>
+              </Reveal>
             ))}
           </div>
         </div>
