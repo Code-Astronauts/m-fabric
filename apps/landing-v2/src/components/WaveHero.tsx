@@ -34,9 +34,9 @@ const FRAGMENT_SHADER = `
   void main() {
     vec2 uv = coverUV(vUv, uRes, uTexRes);
 
-    float amp = uIntensity * 0.035;
-    float freq = 3.5;
-    float speed = uTime * 1.8;
+    float amp = uIntensity * 0.07;
+    float freq = 4.0;
+    float speed = uTime * 2.5;
 
     // Multi-layered wave displacement
     float dx = sin(uv.y * freq * 6.2832 + speed) * amp;
@@ -51,9 +51,12 @@ const FRAGMENT_SHADER = `
     vec4 color = texture2D(uTex, displaced);
 
     // Chromatic aberration on movement
-    float ca = uIntensity * 0.004;
+    float ca = uIntensity * 0.009;
     color.r = texture2D(uTex, displaced + vec2(ca, 0.0)).r;
     color.b = texture2D(uTex, displaced - vec2(ca, 0.0)).b;
+
+    // Boost brightness on movement
+    color.rgb *= 1.0 + uIntensity * 0.18;
 
     gl_FragColor = color;
   }
@@ -163,12 +166,14 @@ export default function WaveHero({
       s.animId = requestAnimationFrame(tick);
 
       // Smooth scroll-driven intensity with asymmetric easing
-      const target = Math.min(s.velocity * 1.2 * amplitudeScale, 1.0);
+      // Idle base keeps wave always visible; scroll adds extra intensity
+      const idleBase = 0.28 * amplitudeScale;
+      const target = Math.min(idleBase + s.velocity * 1.5 * amplitudeScale, 1.0);
       const rate = target > s.smoothVelocity ? riseRate : fallRate;
       s.smoothVelocity += (target - s.smoothVelocity) * rate;
       s.velocity *= 0.92; // decay raw velocity when scroll stops
 
-      material.uniforms.uTime.value += 0.008;
+      material.uniforms.uTime.value += 0.013;
       material.uniforms.uIntensity.value = s.smoothVelocity;
       renderer.render(scene, camera);
     };

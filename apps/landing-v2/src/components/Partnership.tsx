@@ -35,22 +35,6 @@ export function Partnership() {
         />
       </div>
 
-      {/* Illustration: flower — sways */}
-      <div
-        className="absolute pointer-events-none hidden lg:block"
-        style={{ right: "10%", bottom: "-17%", width: 178, height: 161 }}
-        aria-hidden="true"
-      >
-        <div className="animate-illus-sway relative w-full h-full">
-          <Image
-            src="/images/illus-flower.svg"
-            alt=""
-            fill
-            className="object-contain"
-          />
-        </div>
-      </div>
-
       <div className="relative z-10 max-w-[1341px] mx-auto px-[38px] sm:px-10 lg:px-[120px]">
         <div className="max-w-[925px]">
           <Reveal>
