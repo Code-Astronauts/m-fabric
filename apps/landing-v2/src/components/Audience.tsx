@@ -1,3 +1,5 @@
+import Image from "next/image";
+
 const b2cGroups = [
   { title: "Семьи с детьми", subtitle: "Родители выбирают содержательный досуг" },
   { title: "Культурная аудитория", subtitle: "Ценят качество постановки и визуальный язык" },
@@ -41,7 +43,21 @@ function AudienceCard({
 
 export function Audience() {
   return (
-    <section id="audience" className="bg-white py-14 lg:py-24">
+    <section id="audience" className="relative bg-white py-14 lg:py-24">
+        {/* Illustration: flower — bottom right, outside cards */}
+        <div
+            className="hidden lg:block absolute pointer-events-none z-0"
+            style={{ right: "5%", bottom: 500, width: 178, height: 161, transform: "rotate(15deg)" }}
+            aria-hidden="true"
+        >
+            <Image
+                src="/images/illus-flower.svg"
+                alt=""
+                fill
+                className="object-contain"
+            />
+        </div>
+
       <div className="max-w-[1341px] mx-auto px-[38px] sm:px-10 lg:px-[120px]">
         <div className="max-w-[925px]">
           {/* Label */}

@@ -1,3 +1,5 @@
+import Image from "next/image";
+
 const historyParagraphs = [
   "М_фабрика детского контента продолжает линию сильного культурного наследия, переосмысляя его в языке современности.",
   "В основе лежат произведения, которые уже стали частью коллективной памяти — истории, знакомые поколениям, образы, которые формируют представление о добре, ответственности и человеке.",
@@ -8,8 +10,24 @@ const historyParagraphs = [
 
 export function History() {
   return (
-    <section id="history" className="bg-white py-14 lg:py-24">
-      <div className="max-w-[1341px] mx-auto px-[38px] sm:px-10 lg:px-[120px]">
+    <section id="history" className="relative bg-white py-16 lg:py-24">
+      {/* Illustrations: rainbow / drop / circle */}
+      <div
+        className="hidden lg:block absolute pointer-events-none z-0"
+        style={{ right: 0, top: 0, bottom: 0, width: "100%" }}
+        aria-hidden="true"
+      >
+        <Image
+          src="/images/illus-rainbow.svg"
+          alt=""
+          width={110}
+          height={103}
+          style={{ position: "absolute", left: 50, top: 27, transform: "rotate(-75deg)" }}
+          unoptimized
+        />
+      </div>
+
+      <div className="relative z-10 max-w-[1341px] mx-auto px-[38px] sm:px-10 lg:px-[140px]">
         <div className="max-w-[976px]">
           <h2 className="font-display font-bold text-dark text-3xl lg:text-[36px] leading-[1.2] lg:leading-10 uppercase mb-7 lg:mb-10">
             История

@@ -24,12 +24,35 @@ const projects = [
 
 export function Projects() {
   return (
-    <section id="projects" className="bg-white py-14 lg:py-24">
+    <section id="projects" className="relative overflow-hidden bg-white py-14 lg:py-24">
       <div className="max-w-[1341px] mx-auto px-[38px] sm:px-10 lg:px-[120px]">
         <div className="max-w-[925px]">
           <h2 className="font-display font-bold text-dark text-[28px] leading-[1.2] lg:text-[36px] lg:leading-10 mb-8 lg:mb-14">
             Проекты
           </h2>
+
+          {/* Illustration: cloud — between projects, rotated */}
+          <div className="hidden lg:block absolute pointer-events-none z-0"
+               style={{ left: 0, top: 0, width: "100%", zIndex: 0, }}
+            aria-hidden="true"
+          >
+            <Image
+              src="/images/illus-cloud.svg"
+              alt=""
+              width={201}
+              height={175}
+              style={{ position: "absolute", left: "18%", bottom: -975 }}              className="object-contain"
+            />
+
+              <Image
+                  src="/images/illus-circle.svg"
+                  alt=""
+                  width={220}
+                  height={273}
+                  style={{ position: "absolute", right: "5%", top: 370, transform: "rotate(35deg)" }}
+                  unoptimized
+              />
+          </div>
 
           <div className="flex flex-col align-center gap-12 lg:gap-20">
             {projects.map((project) => (
@@ -66,6 +89,7 @@ export function Projects() {
                   </p>
                   <Link
                     href="#"
+                    style={{ zIndex: 9999 }}
                     className="inline-flex items-center bg-brand-blue text-white font-sans font-medium text-[14px] px-6 py-3 rounded-xl hover:bg-brand-blue/90 transition-colors self-start mt-1"
                   >
                     Подробнее →

@@ -1,3 +1,5 @@
+import Image from "next/image";
+
 import WaveHero from "@/components/WaveHero";
 
 const partnerCards = [
@@ -21,19 +23,19 @@ const partnerCards = [
 
 export function Partnership() {
   return (
-    <section id="partnership" className="bg-navy py-14 lg:py-24 relative">
+    <section id="partnership" className="relative bg-navy py-14 lg:py-24">
 
-      <div className="absolute inset-0 pointer-events-none z-0 bg-navy">
-        <WaveHero
-            src="/images/hero-bg-mirrored.jpg"
-            amplitudeScale={0.3}
-            riseRate={0.06}
-            fallRate={0.01}
-            className="opacity-30"
-        />
-      </div>
+        <div className="absolute inset-0 pointer-events-none z-0 bg-navy">
+            <WaveHero
+                src="/images/hero-bg-mirrored.jpg"
+                amplitudeScale={0.3}
+                riseRate={0.06}
+                fallRate={0.01}
+                className="opacity-30"
+            />
+        </div>
 
-      <div className="max-w-[1341px] mx-auto px-[38px] sm:px-10 lg:px-[120px] relative z-5">
+      <div className="max-w-[1341px] mx-auto px-[38px] sm:px-10 lg:px-[120px]">
         <div className="max-w-[925px]">
           {/* Label */}
           <p className="font-sans text-label-dark text-[13px] leading-[1.4] tracking-[1.4px] uppercase mb-4 lg:mb-5">
