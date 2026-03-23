@@ -8,6 +8,7 @@ const navItems = [
   { label: "О нас", href: "#about" },
   { label: "Проекты", href: "#projects" },
   { label: "Партнёрство", href: "#partnership" },
+  { label: "Команда", href: "#team" },
   { label: "Контакты", href: "#contacts" },
 ];
 
@@ -58,13 +59,14 @@ export function Header() {
           ))}
         </nav>
 
-        {/* CTA */}
-        <Link
-          href="#partnership"
-          className="hidden md:inline-flex items-center bg-brand-blue text-white font-sans font-medium text-sm lg:text-[14px] px-5 py-2.5 rounded-xl hover:bg-brand-blue/90 transition-colors"
-        >
-          Партнёрам
-        </Link>
+        <div className="hidden relative md:inline-flex w-[40px] h-[40px]">
+          <Image
+            src="/images/illus-asterisk.svg"
+            alt=""
+            fill
+            className="object-contain"
+          />
+        </div>
 
         {/* Mobile burger */}
         <button

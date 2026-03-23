@@ -26,7 +26,7 @@ export function Approach() {
           <Reveal delay={200}>
             <div className="flex flex-col gap-0.5 mb-6 lg:mb-10">
               <p className="font-sans italic text-light-muted text-[15px] leading-[1.5] lg:text-[18px] lg:leading-7">
-                Встроенная аудитория. Сильные смыслы. Масштабируемость.
+                Сильные смыслы. Масштабируемость.
               </p>
               <p className="font-sans italic text-light-muted text-[15px] leading-[1.5] lg:text-[18px] lg:leading-7">
                 Для больших и маленьких.

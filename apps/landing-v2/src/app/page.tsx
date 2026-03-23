@@ -9,6 +9,7 @@ import { Approach } from "@/components/Approach";
 import { WhatWeDo } from "@/components/WhatWeDo";
 import { Contacts } from "@/components/Contacts";
 import { Footer } from "@/components/Footer";
+import { Team } from "@/components/Team";
 
 export default function Home() {
   return (
@@ -22,6 +23,7 @@ export default function Home() {
       <Audience />
       <Approach />
       <WhatWeDo />
+      <Team />
       <Contacts />
       <Footer />
     </main>

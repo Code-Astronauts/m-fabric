@@ -1,40 +1,55 @@
+import Image from "next/image";
 import { Reveal } from "@/components/Reveal";
 
 function IconProject() {
   return (
-    <svg width="28" height="28" viewBox="0 0 28 28" fill="none" aria-hidden="true">
-      <rect x="3" y="3" width="10" height="10" rx="1.5" stroke="#1d2030" strokeWidth="1.5" />
-      <rect x="15" y="3" width="10" height="10" rx="1.5" stroke="#1d2030" strokeWidth="1.5" />
-      <rect x="3" y="15" width="10" height="10" rx="1.5" stroke="#1d2030" strokeWidth="1.5" />
-      <rect x="15" y="15" width="10" height="10" rx="1.5" stroke="#1d2030" strokeWidth="1.5" />
-    </svg>
+    <div className="w-7 h-7 relative">
+      <Image
+        src="/images/illus-asterisk-blue.svg"
+        alt=""
+        fill
+        className="object-contain"
+      />
+    </div>
   );
 }
 
 function IconScale() {
   return (
-    <svg width="28" height="28" viewBox="0 0 28 28" fill="none" aria-hidden="true">
-      <path d="M14 4v20M4 14h20" stroke="#1d2030" strokeWidth="1.5" strokeLinecap="round" />
-      <circle cx="14" cy="14" r="10" stroke="#1d2030" strokeWidth="1.5" />
-    </svg>
+    <div className="w-7 h-7 relative">
+      <Image
+        src="/images/illus-flower.svg"
+        alt=""
+        fill
+        className="object-contain"
+      />
+    </div>
   );
 }
 
 function IconCulture() {
   return (
-    <svg width="28" height="28" viewBox="0 0 28 28" fill="none" aria-hidden="true">
-      <path d="M4 22h20M7 22V12l7-8 7 8v10" stroke="#1d2030" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
-      <rect x="11" y="16" width="6" height="6" stroke="#1d2030" strokeWidth="1.5" />
-    </svg>
+    <div className="w-7 h-7 relative">
+      <Image
+        src="/images/illus-rainbow.svg"
+        alt=""
+        fill
+        className="object-contain"
+      />
+    </div>
   );
 }
 
 function IconShow() {
   return (
-    <svg width="28" height="28" viewBox="0 0 28 28" fill="none" aria-hidden="true">
-      <circle cx="14" cy="14" r="10" stroke="#1d2030" strokeWidth="1.5" />
-      <path d="M11 10l8 4-8 4V10z" stroke="#1d2030" strokeWidth="1.5" strokeLinejoin="round" />
-    </svg>
+    <div className="w-7 h-7 relative">
+      <Image
+        src="/images/illus-circle.svg"
+        alt=""
+        fill
+        className="object-contain"
+      />
+    </div>
   );
 }
 
@@ -45,9 +60,9 @@ const formats = [
     subtitle: "Создание оригинальных форматов и интеллектуальной собственности",
   },
   {
-    Icon: IconScale,
-    title: "Масштабирование",
-    subtitle: "Гастроли, франшиза и лицензирование проектов",
+    Icon: IconShow,
+    title: "Продюсирование шоу",
+    subtitle: "От идеи до полной реализации на ведущих площадках",
   },
   {
     Icon: IconCulture,
@@ -55,20 +70,20 @@ const formats = [
     subtitle: "Адаптация классики под современного зрителя",
   },
   {
-    Icon: IconShow,
-    title: "Продюсирование шоу",
-    subtitle: "От идеи до полной реализации на ведущих площадках",
+    Icon: IconScale,
+    title: "Масштабирование",
+    subtitle: "Гастроли, франшиза и лицензирование проектов",
   },
 ];
 
 export function WhatWeDo() {
   return (
-    <section id="formats" className="bg-white py-14 lg:py-24">
+    <section id="formats" className="bg-white py-14 lg:py-24 relative">
       <div className="max-w-[1341px] mx-auto px-[38px] sm:px-10 lg:px-[120px]">
         <div className="max-w-[925px]">
           <Reveal>
             <h2 className="font-display font-bold text-dark text-[28px] leading-[1.2] lg:text-[36px] lg:leading-10 mb-8 lg:mb-12">
-              Форматы и направления
+              ФОРМАТЫ И НАПРАВЛЕНИЯ
             </h2>
           </Reveal>
 
@@ -90,6 +105,19 @@ export function WhatWeDo() {
                 </div>
               </Reveal>
             ))}
+          </div>
+        </div>
+
+        <div style={{ position: "absolute", right: "6%", top: 300, width: 150, height: 100 }} className="sm:block hidden">
+          <div
+            // className="animate-illus-spin relative w-full h-full"
+          >
+            <Image
+              src="/images/illus-cloud.svg"
+              alt=""
+              fill
+              className="object-contain"
+            />
           </div>
         </div>
       </div>

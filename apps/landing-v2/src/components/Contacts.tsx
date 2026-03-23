@@ -21,7 +21,7 @@ export function Contacts() {
           {/* Contact info */}
           <Reveal delay={100} className="flex flex-col gap-8">
             <h2 className="font-display font-bold text-white text-[26px] leading-[1.15] lg:text-[30px] lg:leading-9">
-              Свяжитесь с нами
+              Контакты
             </h2>
 
             {/* Email */}
@@ -50,10 +50,10 @@ export function Contacts() {
                 />
               </svg>
               <Link
-                href="mailto:hello@stepa.show"
+                href="mailto:info@mkidsfabrika.ru"
                 className="font-sans text-light-muted text-base lg:text-[18px] leading-7 hover:text-white transition-colors"
               >
-                hello@stepa.show
+                info@mkidsfabrika.ru
               </Link>
             </div>
 
@@ -61,15 +61,19 @@ export function Contacts() {
             <div className="flex gap-4 flex-wrap">
               <Link
                 href="#"
-                className="border border-white/10 rounded-xl px-5 py-2.5 font-sans text-light-muted text-[14px] leading-5 hover:bg-white/10 transition-colors"
+                className="rounded-xl px-3 py-2 font-sans text-light-muted text-[14px] leading-5 transition-colors bg-brand-blue hover:bg-brand-blue/90"
               >
-                ВКонтакте
+                <div className="w-[18px] h-[18px] relative">
+                  <Image alt="" src="/images/vk-logo.svg" fill className="object-contain w-[14px] h-[14px]" />
+                </div>
               </Link>
               <Link
                 href="#"
-                className="border border-white/10 rounded-xl px-5 py-2.5 font-sans text-light-muted text-[14px] leading-5 hover:bg-white/10 transition-colors"
+                className="rounded-xl px-3 py-2 font-sans text-light-muted text-[14px] leading-5 transition-colors bg-brand-blue hover:bg-brand-blue/90"
               >
-                Telegram
+                <div className="w-[18px] h-[18px] relative">
+                  <Image alt="" src="/images/tg-logo.svg" fill className="object-contain" />
+                </div>
               </Link>
             </div>
           </Reveal>

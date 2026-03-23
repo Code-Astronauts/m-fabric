@@ -35,19 +35,15 @@ export function Hero() {
           </div>
 
           <p className="font-sans text-accent-grey/90 text-[15px] leading-[1.5] lg:text-[20px] lg:leading-7 max-w-[580px]">
-            М_фабрика детского контента — продюсерский центр на пересечении
-            классического наследия и современного театра. Мы создаём масштабные
-            шоу и культурные проекты на основе литературного наследия, сильных
-            смыслов и современных форматов — шоу, которые одновременно понятны
-            детям и значимы для взрослых.
+            создаем масштабные шоу и культурные проекты на основе литературного наследия, современных форматов и сильных смыслов для больших и маленьких
           </p>
 
           <div className="flex flex-col sm:flex-row gap-3 pt-1">
             <Link
-              href="#partnership"
+              href="#history"
               className="inline-flex items-center justify-center bg-brand-blue text-white font-sans font-medium text-sm px-6 py-3 rounded-xl hover:bg-brand-blue/90 transition-colors"
             >
-              Партнёрам
+              История
             </Link>
             <Link
               href="#projects"

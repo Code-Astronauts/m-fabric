@@ -35,21 +35,14 @@ export function About() {
           <Reveal delay={200}>
             <div className="max-w-[768px] flex flex-col gap-4 lg:gap-5 mb-8 lg:mb-10">
               <p className="font-sans text-light-muted text-[15px] leading-[1.5] lg:text-[18px] lg:leading-7">
-                М_фабрика детского контента — компания, которая основана Анной и
-                Надеждой Михалковыми. Мы работаем на пересечении театра,
-                технологий и современного детского восприятия.
-              </p>
-              <p className="font-sans text-light-muted text-[15px] leading-[1.5] lg:text-[18px] lg:leading-7">
-                Наша задача — переводить классические культурные произведения в
-                современный язык: понятный детям и одновременно ценный для
-                взрослых.
+                М-фабрика детского контента основана Анной и Надеждой Михалковыми.  Мы работаем на пересечении театра, технологий и современного детского восприятия. Создаём проекты, которые одновременно понятны детям и ценны для взрослых.
               </p>
             </div>
           </Reveal>
 
           <Reveal delay={320}>
             <Link
-              href="#contacts"
+              href="#team"
               style={{ zIndex: 9999 }}
               className="inline-flex items-center bg-brand-blue text-white font-sans font-medium text-[14px] px-6 py-3 rounded-xl hover:bg-brand-blue/90 transition-colors"
             >
@@ -80,8 +73,10 @@ export function About() {
         </div>
 
         {/* Asterisk — spins */}
-        <div style={{ position: "absolute", left: "3%", top: 430, width: 107, height: 100 }}>
-          <div className="animate-illus-spin relative w-full h-full">
+        <div style={{ position: "absolute", left: "3%", top: 360, width: 107, height: 100 }}>
+          <div
+            // className="animate-illus-spin relative w-full h-full"
+          >
             <Image
               src="/images/illus-asterisk.svg"
               alt=""

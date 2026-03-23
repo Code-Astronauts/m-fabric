@@ -51,7 +51,9 @@ export function Audience() {
         style={{ right: "5%", bottom: 500, width: 178, height: 161 }}
         aria-hidden="true"
       >
-        <div className="animate-illus-sway relative w-full h-full">
+        <div
+          // className="animate-illus-sway relative w-full h-full"
+        >
           <Image
             src="/images/illus-flower.svg"
             alt=""

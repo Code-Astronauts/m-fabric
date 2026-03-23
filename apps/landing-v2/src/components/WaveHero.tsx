@@ -167,14 +167,14 @@ export default function WaveHero({
 
       // Smooth scroll-driven intensity with asymmetric easing
       // Idle base keeps wave always visible; scroll adds extra intensity
-      const idleBase = 0.28 * amplitudeScale;
-      const target = Math.min(idleBase + s.velocity * 1.5 * amplitudeScale, 1.0);
-      const rate = target > s.smoothVelocity ? riseRate : fallRate;
-      s.smoothVelocity += (target - s.smoothVelocity) * rate;
-      s.velocity *= 0.92; // decay raw velocity when scroll stops
+      // const idleBase = 0.28 * amplitudeScale;
+      // const target = Math.min(idleBase + s.velocity * 1.5 * amplitudeScale, 1.0);
+      // const rate = target > s.smoothVelocity ? riseRate : fallRate;
+      // s.smoothVelocity += (target - s.smoothVelocity) * rate;
+      // s.velocity *= 0.92; // decay raw velocity when scroll stops
 
-      material.uniforms.uTime.value += 0.013;
-      material.uniforms.uIntensity.value = s.smoothVelocity;
+      // material.uniforms.uTime.value += 0.013;
+      // material.uniforms.uIntensity.value = s.smoothVelocity;
       renderer.render(scene, camera);
     };
     tick();
