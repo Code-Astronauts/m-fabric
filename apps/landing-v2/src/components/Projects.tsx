@@ -21,7 +21,7 @@ const projects = [
       "/images/project-1-5.jpg",
       "/images/project-1-6.jpg",
     ],
-    ctaText: "Подробнее →",
+    ctaText: "Купить билет →",
     ctaLink: "https://stepa.show/",
     imageFirst: false,
   },
