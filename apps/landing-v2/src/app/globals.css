@@ -50,6 +50,7 @@
 @layer base {
   html {
     scroll-behavior: auto;
+    scroll-padding-top: 96px; 
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
   }
@@ -57,5 +58,11 @@
   body {
     background-color: #ffffff;
     color: var(--color-dark);
+  }
+
+  @media (max-width: 768px) {
+    html {
+      scroll-padding-top: 72px;
+    }
   }
 }

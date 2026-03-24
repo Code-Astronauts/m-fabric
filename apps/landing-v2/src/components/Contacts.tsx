@@ -49,12 +49,13 @@ export function Contacts() {
                   strokeLinejoin="round"
                 />
               </svg>
-              <Link
+              <a
                 href="mailto:info@mkidsfabrika.ru"
+                target="_blank"
                 className="font-sans text-light-muted text-base lg:text-[18px] leading-7 hover:text-white transition-colors"
               >
                 info@mkidsfabrika.ru
-              </Link>
+              </a>
             </div>
 
             {/* Social links */}
