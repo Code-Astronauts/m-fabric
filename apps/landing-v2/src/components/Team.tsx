@@ -295,32 +295,32 @@ export function Team() {
           <Reveal delay={80}>
             <div className="flex flex-col lg:flex-row gap-4">
 
+                {/* Two images */}
+                <div className="flex flex-row lg:flex-col gap-4 lg:flex-[2]">
+                    <div className="relative flex-1 lg:flex-none lg:h-[calc(50%-8px)]">
+                        <div className="relative w-full aspect-[4/3] lg:aspect-auto lg:h-full">
+                            <ImageThumb
+                                src="/images/team-1.jpg"
+                                onExpand={() => setModal({ type: "image", src: "/images/team-1.jpg" })}
+                            />
+                        </div>
+                    </div>
+                    <div className="relative flex-1 lg:flex-none lg:h-[calc(50%-8px)]">
+                        <div className="relative w-full aspect-[4/3] lg:aspect-auto lg:h-full">
+                            <ImageThumb
+                                src="/images/team-2.jpg"
+                                onExpand={() => setModal({ type: "image", src: "/images/team-2.jpg" })}
+                            />
+                        </div>
+                    </div>
+                </div>
+
               {/* Video */}
               <div className="w-full lg:flex-[3]">
                 <VideoPlayer
                   src="/videos/team.mp4"
                   onExpand={() => setModal({ type: "video", src: "/videos/team.mp4" })}
                 />
-              </div>
-
-              {/* Two images */}
-              <div className="flex flex-row lg:flex-col gap-4 lg:flex-[2]">
-                <div className="relative flex-1 lg:flex-none lg:h-[calc(50%-8px)]">
-                  <div className="relative w-full aspect-[4/3] lg:aspect-auto lg:h-full">
-                    <ImageThumb
-                      src="/images/team-1.jpg"
-                      onExpand={() => setModal({ type: "image", src: "/images/team-1.jpg" })}
-                    />
-                  </div>
-                </div>
-                <div className="relative flex-1 lg:flex-none lg:h-[calc(50%-8px)]">
-                  <div className="relative w-full aspect-[4/3] lg:aspect-auto lg:h-full">
-                    <ImageThumb
-                      src="/images/team-2.jpg"
-                      onExpand={() => setModal({ type: "image", src: "/images/team-2.jpg" })}
-                    />
-                  </div>
-                </div>
               </div>
 
             </div>
