@@ -19,19 +19,8 @@ export function Approach() {
 
           <Reveal delay={100}>
             <h2 className="font-display font-bold text-white text-[28px] leading-[1.15] lg:text-[36px] lg:leading-10 mb-3 lg:mb-4">
-              Не адаптируем. Переосмысляем.
+                Сильные смыслы. Масштабируемость. Для больших и маленьких.
             </h2>
-          </Reveal>
-
-          <Reveal delay={200}>
-            <div className="flex flex-col gap-0.5 mb-6 lg:mb-10">
-              <p className="font-sans italic text-light-muted text-[15px] leading-[1.5] lg:text-[18px] lg:leading-7">
-                Сильные смыслы. Масштабируемость.
-              </p>
-              <p className="font-sans italic text-light-muted text-[15px] leading-[1.5] lg:text-[18px] lg:leading-7">
-                Для больших и маленьких.
-              </p>
-            </div>
           </Reveal>
 
           <div className="max-w-[768px] flex flex-col gap-4 lg:gap-6">

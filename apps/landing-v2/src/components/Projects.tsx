@@ -13,7 +13,7 @@ const projects = [
     description:
       "Масштабное новогоднее шоу с героями произведений писателя Сергея Михалкова.",
     images: [
-      "/images/project-1-0.png",
+      "/images/project-1-0.jpg",
       "/images/project-1-1.jpg",
       "/images/project-1-2.jpg",
       "/images/project-1-3.jpg",
@@ -21,7 +21,7 @@ const projects = [
       "/images/project-1-5.jpg",
       "/images/project-1-6.jpg",
     ],
-    ctaText: "Купить билет →",
+    ctaText: "Подробнее",
     ctaLink: "https://stepa.show/",
     imageFirst: false,
   },
@@ -40,7 +40,7 @@ const projects = [
       "/images/project-2-5.png",
     ],
     ctaText: "Купить билет →",
-    ctaLink: "https://www.kino-teatr.ru/teatr/news/y2025/9-13/38957/print/",
+    ctaLink: "https://tagankateatr.ru/repertuar/Tri-porosyonka-oi",
     imageFirst: true,
   },
 ];
@@ -203,6 +203,7 @@ export function Projects() {
                     <Link
                       href={project.ctaLink}
                       style={{ zIndex: 9 }}
+                      target="_blank"
                       className="inline-flex items-center bg-brand-blue text-white font-sans font-medium text-[14px] px-6 py-3 rounded-xl hover:bg-brand-blue/90 transition-colors self-start mt-1"
                     >
                       {project.ctaText}

@@ -4,6 +4,7 @@ const footerLinks = [
   { label: "О нас", href: "#about" },
   { label: "Проекты", href: "#projects" },
   { label: "Партнёрство", href: "#partnership" },
+  { label: "Команда", href: "#team" },
   { label: "Контакты", href: "#contacts" },
 ];
 
