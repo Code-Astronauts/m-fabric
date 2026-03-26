@@ -4,6 +4,8 @@ import Image from "next/image";
 import Link from "next/link";
 import { useState, useRef } from "react";
 import { Reveal } from "@/components/Reveal";
+import { SnowCanvas } from "@/components/SnowCanvas";
+import { SnowDrift } from "@/components/SnowDrift";
 
 const stepaImages = [
   "/images/project-1-0.jpg",
@@ -27,10 +29,12 @@ function ProjectCarousel({
   images,
   title,
   theme = "light",
+  showDrift = false,
 }: {
   images: string[];
   title: string;
   theme?: "light" | "dark";
+  showDrift?: boolean;
 }) {
   const [current, setCurrent] = useState(0);
   const touchStartX = useRef<number | null>(null);
@@ -62,6 +66,7 @@ function ProjectCarousel({
         onTouchStart={onTouchStart}
         onTouchEnd={onTouchEnd}
       >
+        {showDrift && <SnowDrift />}
         {images.map((src, i) => (
           <div
             key={src}
@@ -141,6 +146,7 @@ export function Projects() {
     <>
       {/* ── Дядя Степа — синий фон, галерея слева, текст справа ── */}
       <section id="projects" className="relative overflow-hidden bg-brand-blue py-14 lg:py-24">
+        <SnowCanvas />
         <div className="max-w-[1341px] mx-auto px-[38px] sm:px-10 lg:px-[120px]">
           <Reveal>
             <h2 className="font-display font-bold text-white text-[28px] leading-[1.2] lg:text-[36px] lg:leading-10 mb-8 lg:mb-14">
@@ -155,6 +161,7 @@ export function Projects() {
                 images={stepaImages}
                 title="Дядя Степа «Говорят: под Новый год»"
                 theme="dark"
+                showDrift
               />
 
               {/* Текст — справа */}
