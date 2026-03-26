@@ -1,8 +1,59 @@
+"use client";
+
 import Image from "next/image";
 import Link from "next/link";
+import { useEffect, useRef } from "react";
 import WaveHero from "@/components/WaveHero";
 
+const SNAP_THRESHOLD = 80;  // px — сколько нужно проскроллить
+const SCROLL_DURATION = 900; // ms — длительность анимации
+
+function easeInOutQuart(t: number) {
+  return t < 0.5 ? 8 * t * t * t * t : 1 - Math.pow(-2 * t + 2, 4) / 2;
+}
+
+function smoothScrollTo(targetY: number, duration: number) {
+  const startY = window.scrollY;
+  const distance = targetY - startY;
+  const startTime = performance.now();
+
+  function step(now: number) {
+    const elapsed = now - startTime;
+    const progress = Math.min(elapsed / duration, 1);
+    window.scrollTo(0, startY + distance * easeInOutQuart(progress));
+    if (progress < 1) requestAnimationFrame(step);
+  }
+
+  requestAnimationFrame(step);
+}
+
 export function Hero() {
+  const hasSnapped = useRef(false);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      const scrollY = window.scrollY;
+
+      if (scrollY < 10) {
+        hasSnapped.current = false;
+        return;
+      }
+
+      if (hasSnapped.current) return;
+
+      const history = document.getElementById("history");
+      if (!history) return;
+
+      if (scrollY >= SNAP_THRESHOLD && scrollY < history.offsetTop) {
+        hasSnapped.current = true;
+        smoothScrollTo(history.offsetTop, SCROLL_DURATION);
+      }
+    };
+
+    window.addEventListener("scroll", handleScroll, { passive: true });
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
+
   return (
     <section
       id="hero"
@@ -20,7 +71,7 @@ export function Hero() {
       {/* Overlay */}
       <div className="absolute inset-0 bg-navy/60 pointer-events-none z-0" />
 
-      {/* Content — pt-[72px] on mobile (header height), pt-[96px] on desktop */}
+      {/* Content */}
       <div className="relative z-10 h-full max-w-[1341px] w-full mx-auto px-[38px] sm:px-10 lg:px-12 pt-[72px] lg:pt-[96px] flex flex-col lg:flex-row items-center justify-center gap-10 lg:gap-0">
         {/* Left: text */}
         <div className="lg:flex-1 flex flex-col gap-5 lg:gap-6 max-w-[580px]">
@@ -54,7 +105,7 @@ export function Hero() {
         </div>
 
         {/* Right: logo card */}
-        <div className="hidden lg:flex shrink-0 ml-auto ml-auto">
+        <div className="hidden lg:flex shrink-0 ml-auto">
           <div className="bg-white/10 rounded-2xl p-5 backdrop-blur-sm">
             <Image
               src="/images/logo-main.png"
