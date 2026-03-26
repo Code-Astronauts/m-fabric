@@ -28,7 +28,22 @@ function smoothScrollTo(targetY: number, duration: number) {
 }
 
 export function Hero() {
-  const hasSnapped = useRef(false);
+  const hasSnapped  = useRef(false);
+  const sectionRef  = useRef<HTMLElement>(null);
+
+  // Надёжная полноэкранная высота на всех браузерах включая мобильный Safari
+  useEffect(() => {
+    const el = sectionRef.current;
+    if (!el) return;
+
+    const setHeight = () => {
+      el.style.height = `${window.innerHeight}px`;
+    };
+
+    setHeight();
+    window.addEventListener("resize", setHeight);
+    return () => window.removeEventListener("resize", setHeight);
+  }, []);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -57,8 +72,10 @@ export function Hero() {
 
   return (
     <section
+      ref={sectionRef}
       id="hero"
-      className="relative bg-navy overflow-hidden w-screen h-svh min-h-svh"
+      className="relative bg-navy overflow-hidden w-screen"
+      style={{ height: "100svh" }} // CSS-fallback до выполнения JS
     >
       {/* Background — WaveHero canvas */}
       <div className="absolute inset-0 pointer-events-none z-0">
