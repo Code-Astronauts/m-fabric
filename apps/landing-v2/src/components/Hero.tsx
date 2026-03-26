@@ -46,7 +46,8 @@ export function Hero() {
 
       if (scrollY >= SNAP_THRESHOLD && scrollY < history.offsetTop) {
         hasSnapped.current = true;
-        smoothScrollTo(history.offsetTop, SCROLL_DURATION);
+        const headerHeight = document.getElementById("header")?.offsetHeight ?? 96;
+        smoothScrollTo(history.offsetTop - headerHeight, SCROLL_DURATION);
       }
     };
 
