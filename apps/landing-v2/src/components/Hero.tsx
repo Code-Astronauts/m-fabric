@@ -6,8 +6,7 @@ export function Hero() {
   return (
     <section
       id="hero"
-      className="relative bg-navy overflow-hidden"
-      style={{ minHeight: "600px" }}
+      className="relative bg-navy overflow-hidden w-screen h-svh min-h-svh"
     >
       {/* Background — WaveHero canvas */}
       <div className="absolute inset-0 pointer-events-none z-0">
@@ -22,9 +21,9 @@ export function Hero() {
       <div className="absolute inset-0 bg-navy/60 pointer-events-none z-0" />
 
       {/* Content — pt-[72px] on mobile (header height), pt-[96px] on desktop */}
-      <div className="relative z-10 max-w-[1341px] mx-auto px-[38px] sm:px-10 lg:px-12 pt-[96px] pb-16 lg:pt-[160px] lg:pb-[120px] flex flex-col lg:flex-row items-center gap-10 lg:gap-0">
+      <div className="relative z-10 h-full max-w-[1341px] w-full mx-auto px-[38px] sm:px-10 lg:px-12 pt-[72px] lg:pt-[96px] flex flex-col lg:flex-row items-center justify-center gap-10 lg:gap-0">
         {/* Left: text */}
-        <div className="flex-1 flex flex-col gap-5 lg:gap-6 max-w-[580px]">
+        <div className="lg:flex-1 flex flex-col gap-5 lg:gap-6 max-w-[580px]">
           <div className="flex flex-col gap-2">
             <h1 className="font-display font-bold text-white text-[36px] leading-[1.1] sm:text-5xl lg:text-[60px]">
               М_фабрика детского контента
