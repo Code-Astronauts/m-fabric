@@ -66,7 +66,7 @@ function ProjectCarousel({
         onTouchStart={onTouchStart}
         onTouchEnd={onTouchEnd}
       >
-        {showDrift && <SnowDrift />}
+        {showDrift && <SnowDrift visible={current === 0} />}
         {images.map((src, i) => (
           <div
             key={src}

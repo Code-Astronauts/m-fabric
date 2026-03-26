@@ -119,8 +119,11 @@ function drawDrift(
 
 // ── Component ──────────────────────────────────────────────────────────────
 
-export function SnowDrift() {
-  const canvasRef = useRef<HTMLCanvasElement>(null);
+export function SnowDrift({ visible = true }: { visible?: boolean }) {
+  const canvasRef  = useRef<HTMLCanvasElement>(null);
+  const visibleRef = useRef(visible);
+
+  useEffect(() => { visibleRef.current = visible; }, [visible]);
 
   useEffect(() => {
     const canvas = canvasRef.current;
@@ -164,9 +167,10 @@ export function SnowDrift() {
       const delta      = curScrollY - prevScrollY;
       prevScrollY      = curScrollY;
 
-      const target = sectionVisibility();
+      // 0 если не первый слайд, иначе — видимость секции
+      const target = visibleRef.current ? sectionVisibility() : 0;
 
-      // Плавно следуем за видимостью секции
+      // Плавно следуем за целевым значением
       snowAmount += (target - snowAmount) * 0.04;
 
       ctx!.clearRect(0, 0, w, h);
