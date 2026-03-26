@@ -46,6 +46,15 @@
 .animate-illus-pulse  { animation: illus-pulse-scale 3.5s ease-in-out infinite; }
 .animate-illus-sway   { animation: illus-sway 5s ease-in-out infinite; }
 
+/* ── Extra bottom padding between sections on mobile ── */
+@layer utilities {
+  @media (max-width: 1023px) {
+    main > section:not(#hero) {
+      padding-bottom: 7rem;
+    }
+  }
+}
+
 /* ── Global Base ── */
 @layer base {
   html {
