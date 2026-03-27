@@ -140,6 +140,7 @@ function VideoPlayer({ src, onExpand }: { src: string; onExpand: () => void }) {
         muted
         loop
         playsInline
+        preload="metadata"
         onTimeUpdate={onTimeUpdate}
         onLoadedMetadata={onLoadedMetadata}
       />
@@ -249,7 +250,7 @@ function VideoPlayer({ src, onExpand }: { src: string; onExpand: () => void }) {
 function ImageThumb({ src, onExpand }: { src: string; onExpand: () => void }) {
   return (
     <div className="relative w-full h-full group/img rounded-2xl overflow-hidden cursor-pointer" onClick={onExpand}>
-      <Image src={src} alt="" fill className="object-cover transition-transform duration-500 group-hover/img:scale-105" />
+      <Image src={src} alt="" fill sizes="(max-width: 1024px) 50vw, 30vw" loading="lazy" className="object-cover transition-transform duration-500 group-hover/img:scale-105" />
       <div className="absolute inset-0 bg-black/0 group-hover/img:bg-black/30 transition-colors duration-300 flex items-center justify-center">
         <div className="opacity-0 group-hover/img:opacity-100 transition-opacity duration-300 w-10 h-10 rounded-full bg-white/20 backdrop-blur-sm flex items-center justify-center">
           <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="white" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
@@ -294,32 +295,32 @@ export function Team() {
           <Reveal delay={80}>
             <div className="flex flex-col lg:flex-row gap-4">
 
+                {/* Two images */}
+                <div className="flex flex-row lg:flex-col gap-4 lg:flex-[2]">
+                    <div className="relative flex-1 lg:flex-none lg:h-[calc(50%-8px)]">
+                        <div className="relative w-full aspect-[4/3] lg:aspect-auto lg:h-full">
+                            <ImageThumb
+                                src="/images/team-1.jpg"
+                                onExpand={() => setModal({ type: "image", src: "/images/team-1.jpg" })}
+                            />
+                        </div>
+                    </div>
+                    <div className="relative flex-1 lg:flex-none lg:h-[calc(50%-8px)]">
+                        <div className="relative w-full aspect-[4/3] lg:aspect-auto lg:h-full">
+                            <ImageThumb
+                                src="/images/team-2.jpg"
+                                onExpand={() => setModal({ type: "image", src: "/images/team-2.jpg" })}
+                            />
+                        </div>
+                    </div>
+                </div>
+
               {/* Video */}
               <div className="w-full lg:flex-[3]">
                 <VideoPlayer
                   src="/videos/team.mp4"
                   onExpand={() => setModal({ type: "video", src: "/videos/team.mp4" })}
                 />
-              </div>
-
-              {/* Two images */}
-              <div className="flex flex-row lg:flex-col gap-4 lg:flex-[2]">
-                <div className="relative flex-1 lg:flex-none lg:h-[calc(50%-8px)]">
-                  <div className="relative w-full aspect-[4/3] lg:aspect-auto lg:h-full">
-                    <ImageThumb
-                      src="/images/team-1.jpg"
-                      onExpand={() => setModal({ type: "image", src: "/images/team-1.jpg" })}
-                    />
-                  </div>
-                </div>
-                <div className="relative flex-1 lg:flex-none lg:h-[calc(50%-8px)]">
-                  <div className="relative w-full aspect-[4/3] lg:aspect-auto lg:h-full">
-                    <ImageThumb
-                      src="/images/team-2.jpg"
-                      onExpand={() => setModal({ type: "image", src: "/images/team-2.jpg" })}
-                    />
-                  </div>
-                </div>
               </div>
 
             </div>

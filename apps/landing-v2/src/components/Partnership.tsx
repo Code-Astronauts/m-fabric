@@ -45,14 +45,11 @@ export function Partnership() {
 
           <Reveal delay={100}>
             <h2 className="font-display font-bold text-white text-[28px] leading-[1.2] lg:text-[36px] lg:leading-10 mb-4 lg:mb-5">
-              Возможности для партнёрства
+                Эффективное и долгосрочное сотрудничество с инвесторами, институциями и брендами
             </h2>
           </Reveal>
 
           <Reveal delay={200}>
-            <p className="font-sans text-light-muted text-[15px] leading-[1.5] lg:text-[18px] lg:leading-7 max-w-[768px] mb-4 lg:mb-8">
-              Эффективное и долгосрочное сотрудничество с инвесторами, институциями и брендами
-            </p>
             <p className="font-sans text-light-muted text-[15px] leading-[1.5] lg:text-[18px] lg:leading-7 max-w-[768px] mb-8 lg:mb-12">
               Мы работаем с партнёрами как с соавторами, находя нестандартные решения на стыке искусства, технологий и контента, превращая каждую коллаборацию в самостоятельный опыт и точку открытия.
             </p>

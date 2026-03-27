@@ -1,13 +1,81 @@
+"use client";
+
 import Image from "next/image";
 import Link from "next/link";
+import { useEffect, useRef } from "react";
 import WaveHero from "@/components/WaveHero";
 
+const SNAP_THRESHOLD = 80;  // px — сколько нужно проскроллить
+const SCROLL_DURATION = 900; // ms — длительность анимации
+
+function easeInOutQuart(t: number) {
+  return t < 0.5 ? 8 * t * t * t * t : 1 - Math.pow(-2 * t + 2, 4) / 2;
+}
+
+function smoothScrollTo(targetY: number, duration: number) {
+  const startY = window.scrollY;
+  const distance = targetY - startY;
+  const startTime = performance.now();
+
+  function step(now: number) {
+    const elapsed = now - startTime;
+    const progress = Math.min(elapsed / duration, 1);
+    window.scrollTo(0, startY + distance * easeInOutQuart(progress));
+    if (progress < 1) requestAnimationFrame(step);
+  }
+
+  requestAnimationFrame(step);
+}
+
 export function Hero() {
+  const hasSnapped  = useRef(false);
+  const sectionRef  = useRef<HTMLElement>(null);
+
+  // Надёжная полноэкранная высота на всех браузерах включая мобильный Safari
+  useEffect(() => {
+    const el = sectionRef.current;
+    if (!el) return;
+
+    const setHeight = () => {
+      el.style.height = `${window.innerHeight}px`;
+    };
+
+    setHeight();
+    window.addEventListener("resize", setHeight);
+    return () => window.removeEventListener("resize", setHeight);
+  }, []);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      const scrollY = window.scrollY;
+
+      if (scrollY < 10) {
+        hasSnapped.current = false;
+        return;
+      }
+
+      if (hasSnapped.current) return;
+
+      const history = document.getElementById("history");
+      if (!history) return;
+
+      if (scrollY >= SNAP_THRESHOLD && scrollY < history.offsetTop) {
+        hasSnapped.current = true;
+        const headerHeight = document.getElementById("header")?.offsetHeight ?? 96;
+        smoothScrollTo(history.offsetTop - headerHeight, SCROLL_DURATION);
+      }
+    };
+
+    window.addEventListener("scroll", handleScroll, { passive: true });
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
+
   return (
     <section
+      ref={sectionRef}
       id="hero"
-      className="relative bg-navy overflow-hidden"
-      style={{ minHeight: "600px" }}
+      className="relative bg-navy overflow-hidden w-screen"
+      style={{ height: "100svh" }} // CSS-fallback до выполнения JS
     >
       {/* Background — WaveHero canvas */}
       <div className="absolute inset-0 pointer-events-none z-0">
@@ -21,10 +89,10 @@ export function Hero() {
       {/* Overlay */}
       <div className="absolute inset-0 bg-navy/60 pointer-events-none z-0" />
 
-      {/* Content — pt-[72px] on mobile (header height), pt-[96px] on desktop */}
-      <div className="relative z-10 max-w-[1341px] mx-auto px-[38px] sm:px-10 lg:px-12 pt-[96px] pb-16 lg:pt-[160px] lg:pb-[120px] flex flex-col lg:flex-row items-center gap-10 lg:gap-0">
+      {/* Content */}
+      <div className="relative z-10 h-full max-w-[1341px] w-full mx-auto px-[38px] sm:px-10 lg:px-12 pt-[72px] lg:pt-[96px] flex flex-col lg:flex-row items-center justify-center gap-10 lg:gap-0">
         {/* Left: text */}
-        <div className="flex-1 flex flex-col gap-5 lg:gap-6 max-w-[580px]">
+        <div className="lg:flex-1 flex flex-col gap-5 lg:gap-6 max-w-[580px]">
           <div className="flex flex-col gap-2">
             <h1 className="font-display font-bold text-white text-[36px] leading-[1.1] sm:text-5xl lg:text-[60px]">
               М_фабрика детского контента
@@ -55,7 +123,7 @@ export function Hero() {
         </div>
 
         {/* Right: logo card */}
-        <div className="hidden lg:flex shrink-0 ml-auto ml-auto">
+        <div className="hidden lg:flex shrink-0 ml-auto">
           <div className="bg-white/10 rounded-2xl p-5 backdrop-blur-sm">
             <Image
               src="/images/logo-main.png"

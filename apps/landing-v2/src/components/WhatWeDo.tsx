@@ -5,7 +5,7 @@ function IconProject() {
   return (
     <div className="w-7 h-7 relative">
       <Image
-        src="/images/illus-asterisk-blue.svg"
+        src="/images/illus-ellipse1.svg"
         alt=""
         fill
         className="object-contain"
@@ -18,7 +18,7 @@ function IconScale() {
   return (
     <div className="w-7 h-7 relative">
       <Image
-        src="/images/illus-flower.svg"
+        src="/images/illus-fish.svg"
         alt=""
         fill
         className="object-contain"
@@ -31,7 +31,7 @@ function IconCulture() {
   return (
     <div className="w-7 h-7 relative">
       <Image
-        src="/images/illus-rainbow.svg"
+        src="/images/illus-ellipse2.svg"
         alt=""
         fill
         className="object-contain"
@@ -44,7 +44,7 @@ function IconShow() {
   return (
     <div className="w-7 h-7 relative">
       <Image
-        src="/images/illus-circle.svg"
+        src="/images/illus-ellipse3.svg"
         alt=""
         fill
         className="object-contain"

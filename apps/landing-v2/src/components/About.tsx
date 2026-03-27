@@ -73,12 +73,12 @@ export function About() {
         </div>
 
         {/* Asterisk — spins */}
-        <div style={{ position: "absolute", left: "3%", top: 360, width: 107, height: 100 }}>
+        <div style={{ position: "absolute", left: "4%", top: 360, width: 129, height: 120, transform: "rotate(25deg)" }}>
           <div
             // className="animate-illus-spin relative w-full h-full"
           >
             <Image
-              src="/images/illus-asterisk.svg"
+              src="/images/illus-spiral.svg"
               alt=""
               fill
               className="object-contain"
