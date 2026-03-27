@@ -60,22 +60,24 @@ export function Contacts() {
 
             {/* Social links */}
             <div className="flex gap-4 flex-wrap">
-              <Link
-                href="#"
+              <a
+                href="https://m.vk.com/stepa.friends?ysclid=mn8ovegdhu96909624"
+                target="_blank"
                 className="rounded-xl px-3 py-2 font-sans text-light-muted text-[14px] leading-5 transition-colors bg-brand-blue hover:bg-brand-blue/90"
               >
                 <div className="w-[18px] h-[18px] relative">
                   <Image alt="" src="/images/vk-logo.svg" fill className="object-contain w-[14px] h-[14px]" />
                 </div>
-              </Link>
-              <Link
-                href="#"
+              </a>
+              <a
+                href="https://t.me/stepa_friends"
+                target="_blank"
                 className="rounded-xl px-3 py-2 font-sans text-light-muted text-[14px] leading-5 transition-colors bg-brand-blue hover:bg-brand-blue/90"
               >
                 <div className="w-[18px] h-[18px] relative">
                   <Image alt="" src="/images/tg-logo.svg" fill className="object-contain" />
                 </div>
-              </Link>
+              </a>
             </div>
           </Reveal>
         </div>
