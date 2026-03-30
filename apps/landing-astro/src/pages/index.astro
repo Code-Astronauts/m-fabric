@@ -1,0 +1,98 @@
+---
+import { getImage } from 'astro:assets';
+import Layout from '../layouts/Layout.astro';
+import { Header } from '../components/Header';
+import { Hero } from '../components/Hero';
+import { History } from '../components/History';
+import { About } from '../components/About';
+import { Projects } from '../components/Projects';
+import { Partnership } from '../components/Partnership';
+import { Audience } from '../components/Audience';
+import { Approach } from '../components/Approach';
+import { WhatWeDo } from '../components/WhatWeDo';
+import { Team } from '../components/Team';
+import { Contacts } from '../components/Contacts';
+import { Footer } from '../components/Footer';
+
+// ── Shared assets ──
+import heroBgRaw        from '../assets/images/hero-bg.jpg';
+import heroBgMirroredRaw from '../assets/images/hero-bg-mirrored.png';
+import logoRaw          from '../assets/images/logo.png';
+import logoMainRaw      from '../assets/images/logo-main.png';
+import team1Raw         from '../assets/images/team-1.jpg';
+import team2Raw         from '../assets/images/team-2.jpg';
+
+// ── Дядя Степа ──
+import stepa0  from '../assets/images/project_stepa/project-1-0.jpg';
+import stepa5  from '../assets/images/project_stepa/project_1_5.jpg';
+import stepa6  from '../assets/images/project_stepa/project_1_6.jpg';
+import stepa7  from '../assets/images/project_stepa/project_1_7.jpg';
+import stepa8  from '../assets/images/project_stepa/project_1_8.jpg';
+import stepa9  from '../assets/images/project_stepa/project_1_9.jpg';
+import stepa10 from '../assets/images/project_stepa/project_1_10.jpg';
+import stepa11 from '../assets/images/project_stepa/project_1_11.jpg';
+import stepa12 from '../assets/images/project_stepa/project_1_12.jpg';
+import stepa13 from '../assets/images/project_stepa/project_1_13.jpg';
+
+// ── Три Поросенка ──
+import pigs0 from '../assets/images/project_pigs/project_2_0.jpg';
+import pigs1 from '../assets/images/project_pigs/project_2_1.jpg';
+import pigs2 from '../assets/images/project_pigs/project_2_2.jpg';
+import pigs3 from '../assets/images/project_pigs/project_2_3.jpg';
+import pigs4 from '../assets/images/project_pigs/project_2_4.jpg';
+import pigs5 from '../assets/images/project_pigs/project_2_5.jpg';
+
+const PHOTO = { format: 'webp' as const, quality: 82 };
+const LOGO  = { format: 'webp' as const, quality: 90 };
+
+const [
+  heroBg, heroBgMirrored,
+  logo, logoMain,
+  team1, team2,
+  s0, s5, s6, s7, s8, s9, s10, s11, s12, s13,
+  p0, p1, p2, p3, p4, p5,
+] = await Promise.all([
+  getImage({ src: heroBgRaw,         ...PHOTO }),
+  getImage({ src: heroBgMirroredRaw, ...PHOTO }),
+  getImage({ src: logoRaw,           ...LOGO  }),
+  getImage({ src: logoMainRaw,       ...LOGO  }),
+  getImage({ src: team1Raw,          ...PHOTO }),
+  getImage({ src: team2Raw,          ...PHOTO }),
+  getImage({ src: stepa0,  ...PHOTO }),
+  getImage({ src: stepa5,  ...PHOTO }),
+  getImage({ src: stepa6,  ...PHOTO }),
+  getImage({ src: stepa7,  ...PHOTO }),
+  getImage({ src: stepa8,  ...PHOTO }),
+  getImage({ src: stepa9,  ...PHOTO }),
+  getImage({ src: stepa10, ...PHOTO }),
+  getImage({ src: stepa11, ...PHOTO }),
+  getImage({ src: stepa12, ...PHOTO }),
+  getImage({ src: stepa13, ...PHOTO }),
+  getImage({ src: pigs0,   ...PHOTO }),
+  getImage({ src: pigs1,   ...PHOTO }),
+  getImage({ src: pigs2,   ...PHOTO }),
+  getImage({ src: pigs3,   ...PHOTO }),
+  getImage({ src: pigs4,   ...PHOTO }),
+  getImage({ src: pigs5,   ...PHOTO }),
+]);
+
+const stepaImages  = [s0, s5, s6, s7, s8, s9, s10, s11, s12, s13].map(i => i.src);
+const pigletImages = [p0, p1, p2, p3, p4, p5].map(i => i.src);
+---
+
+<Layout>
+  <main class="min-h-screen">
+    <Header client:load logoSrc={logo.src} />
+    <Hero   client:load heroBgSrc={heroBg.src} logoMainSrc={logoMain.src} />
+    <History client:load />
+    <About   client:load heroBgMirroredSrc={heroBgMirrored.src} />
+    <Projects client:load stepaImages={stepaImages} pigletImages={pigletImages} />
+    <Partnership client:load heroBgMirroredSrc={heroBgMirrored.src} />
+    <Audience client:load />
+    <Approach client:load />
+    <WhatWeDo client:load />
+    <Team     client:load heroBgMirroredSrc={heroBgMirrored.src} team1Src={team1.src} team2Src={team2.src} />
+    <Contacts client:load logoSrc={logo.src} />
+    <Footer   client:load />
+  </main>
+</Layout>

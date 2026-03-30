@@ -17,7 +17,7 @@ const stepaImages = [
 ];
 
 const pigletImages = [
-  "/images/project-2-0.jpg",
+  "/images/project_2_0.jpg",
   "/images/project-2-1.jpg",
   "/images/project-2-2.jpg",
   "/images/project-2-3.jpg",
