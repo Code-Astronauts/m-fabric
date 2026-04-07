@@ -1,0 +1,536 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<title>Animated Icons — custom trails</title>
+<style>
+  :root {
+    --blue: #2b48e8;
+    --bg: #fafaf7;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    background: var(--bg);
+    font-family: ui-serif, Georgia, "Times New Roman", serif;
+    color: #1a1a1a;
+    min-height: 100vh;
+    padding: 60px 40px;
+  }
+  header { max-width: 1100px; margin: 0 auto 50px; }
+  h1 { font-size: 42px; font-weight: 400; letter-spacing: -1.2px; margin-bottom: 8px; }
+  header p { font-size: 15px; color: #666; font-family: ui-sans-serif, system-ui; }
+  .divider {
+    width: 100%; max-width: 1100px; height: 5px;
+    background: var(--blue); border-radius: 3px;
+    margin: 0 auto 60px;
+    transform-origin: left center;
+    animation: dividerGrow 1.2s cubic-bezier(.22,1,.36,1) both;
+  }
+  @keyframes dividerGrow { 0% { transform: scaleX(0); } 100% { transform: scaleX(1); } }
+
+  .grid {
+    max-width: 1100px; margin: 0 auto;
+    display: grid; grid-template-columns: repeat(4, 1fr); gap: 30px;
+  }
+  .cell {
+    aspect-ratio: 1; background: #fff; border-radius: 20px;
+    display: flex; align-items: center; justify-content: center;
+    box-shadow: 0 1px 0 rgba(0,0,0,0.04), 0 20px 40px -20px rgba(43,72,232,0.15);
+    position: relative; overflow: hidden;
+  }
+  .cell svg { width: 70%; height: 70%; overflow: visible; }
+  .label {
+    position: absolute; bottom: 12px; left: 0; right: 0;
+    text-align: center; font-family: ui-sans-serif, system-ui;
+    font-size: 10px; text-transform: uppercase; letter-spacing: 1.5px; color: #aaa;
+  }
+
+  .icon, .trail {
+    fill: var(--blue);
+    transform-origin: center;
+    transform-box: fill-box;
+  }
+
+  /* Цикл = 6s. След живёт в районе 65–98% */
+
+  /* ============ 1. SQUIGGLE ============
+     От линии остаётся такая же, но тонкая (как карандаш), и уползает вверх-вправо */
+  .squiggle {
+    fill: none; stroke: var(--blue); stroke-width: 14;
+    stroke-linecap: round; stroke-linejoin: round;
+    stroke-dasharray: 600; stroke-dashoffset: 600;
+    animation: squiggleDraw 6s ease-in-out infinite;
+  }
+  @keyframes squiggleDraw {
+    0%   { stroke-dashoffset: 600; }
+    20%  { stroke-dashoffset: 0; }
+    55%  { stroke-dashoffset: 0; }
+    68%  { stroke-dashoffset: 0; opacity: 1; }
+    70%  { stroke-dashoffset: 0; opacity: 0; } /* исчезает мгновенно — остаётся тонкий вариант */
+    100% { stroke-dashoffset: 0; opacity: 0; }
+  }
+  .squiggle-trail {
+    fill: none; stroke: var(--blue); stroke-width: 2;
+    stroke-linecap: round; stroke-linejoin: round;
+    stroke-dasharray: 600; stroke-dashoffset: 0;
+    animation: squiggleTrail 6s ease-in-out infinite;
+  }
+  @keyframes squiggleTrail {
+    0%, 68%  { opacity: 0; stroke-dashoffset: 0; }
+    70%      { opacity: 1; stroke-dashoffset: 0; }      /* тонкая видна целиком */
+    95%      { opacity: 1; stroke-dashoffset: -600; }   /* стирается с конца (справа налево) */
+    100%     { opacity: 0; stroke-dashoffset: -600; }
+  }
+
+  /* ============ 2. BLOB ============
+     Сдувается, маленький шарик всплывает вверх и растворяется */
+  .blob { animation: blobLife 6s ease-in-out infinite; }
+  @keyframes blobLife {
+    0%   { transform: scale(0) rotate(-20deg); opacity: 0; }
+    12%  { transform: scale(1.1) rotate(0deg); opacity: 1; }
+    20%  { transform: scale(0.97) rotate(2deg); }
+    40%  { transform: scale(1.03) rotate(-2deg); }
+    55%  { transform: scale(1) rotate(0deg); opacity: 1; }
+    70%, 100% { transform: scale(0) rotate(15deg); opacity: 0; }
+  }
+  .blob-trail { animation: blobTrail 6s ease-in-out infinite; }
+  @keyframes blobTrail {
+    0%, 62%  { opacity: 0; transform: translate(0,0) scale(0); }
+    70%      { opacity: 1; transform: translate(0,0) scale(1); }
+    90%      { opacity: 1; transform: translate(0,-40px) scale(0.9); }
+    100%     { opacity: 0; transform: translate(0,-55px) scale(0.2); }
+  }
+
+  /* ============ 3. CLOUD ============
+     Облако уплыло, остаются 3 капельки и падают вниз */
+  .cloud { animation: cloudDrift 6s ease-in-out infinite; }
+  @keyframes cloudDrift {
+    0%   { transform: translateX(-120px) scale(0.8); opacity: 0; }
+    15%  { transform: translateX(0) scale(1); opacity: 1; }
+    35%  { transform: translateX(5px) translateY(-3px); }
+    55%  { transform: translateX(-5px) translateY(3px); }
+    65%  { transform: translateX(0); opacity: 1; }
+    75%, 100% { transform: translateX(120px) scale(0.8); opacity: 0; }
+  }
+  .rain-1 { animation: rainFall 6s ease-in-out infinite; }
+  .rain-2 { animation: rainFall 6s ease-in-out infinite -0.15s; }
+  .rain-3 { animation: rainFall 6s ease-in-out infinite -0.3s; }
+  @keyframes rainFall {
+    0%, 62%  { opacity: 0; transform: translateY(-10px); }
+    68%      { opacity: 1; transform: translateY(0); }
+    90%      { opacity: 1; transform: translateY(45px); }
+    100%     { opacity: 0; transform: translateY(60px); }
+  }
+
+  /* ============ 4. PEANUT ============
+     Укатился, маленький орешек докатывается и катится дальше */
+  .peanut { animation: peanutRoll 6s cubic-bezier(.5,.1,.5,1) infinite; }
+  @keyframes peanutRoll {
+    0%   { transform: translateX(-150px) rotate(-360deg); opacity: 0; }
+    18%  { transform: translateX(0) rotate(0deg); opacity: 1; }
+    35%  { transform: rotate(-8deg) scale(1.05); }
+    55%  { transform: rotate(8deg) scale(0.95); }
+    65%  { transform: rotate(0deg); opacity: 1; }
+    75%, 100% { transform: translateX(150px) rotate(360deg); opacity: 0; }
+  }
+  .peanut-trail {
+    animation: peanutTrail 6s cubic-bezier(.5,.1,.5,1) infinite;
+    transform-origin: center; transform-box: fill-box;
+  }
+  @keyframes peanutTrail {
+    0%, 65%  { opacity: 0; transform: translateX(-50px) rotate(-180deg) scale(0); }
+    72%      { opacity: 1; transform: translateX(-25px) rotate(-30deg) scale(1); }
+    90%      { opacity: 1; transform: translateX(60px) rotate(540deg) scale(1); }
+    100%     { opacity: 0; transform: translateX(95px) rotate(720deg) scale(0.3); }
+  }
+
+  /* ============ 5. CHARACTER ============
+     Тело (квадрат+основание) исчезает, голова остаётся на месте, падает, дважды подпрыгивает и улетает вверх */
+  .character-body {
+    animation: characterBody 6s ease-in-out infinite;
+    transform-origin: bottom center;
+  }
+  @keyframes characterBody {
+    0%   { transform: translateY(100%) scaleY(0.3); opacity: 0; }
+    18%  { transform: translateY(0) scaleY(1); opacity: 1; }
+    35%  { transform: translateY(-3px) scaleY(1.02); }
+    55%  { transform: translateY(2px) scaleY(0.98); }
+    65%  { transform: translateY(0) scaleY(1); opacity: 1; }
+    70%  { transform: translateY(0) scaleY(0.1); opacity: 0; } /* квадрат схлопнулся вниз */
+    100% { opacity: 0; }
+  }
+  .character-head {
+    animation: characterHead 6s ease-in-out infinite;
+    transform-origin: center;
+    transform-box: fill-box;
+  }
+  @keyframes characterHead {
+    0%   { transform: translateY(70px) scale(0); opacity: 0; }
+    18%  { transform: translateY(0) scale(1); opacity: 1; }  /* появилась на своём месте */
+    65%  { transform: translateY(0) scale(1); opacity: 1; }  /* стоит пока тело живёт */
+    72%  { transform: translateY(35px) scale(1,0.85); opacity: 1; } /* упала вниз, чуть сплющилась */
+    76%  { transform: translateY(18px) scale(1); opacity: 1; }      /* первый подскок */
+    80%  { transform: translateY(35px) scale(1,0.9); opacity: 1; }  /* вниз */
+    84%  { transform: translateY(25px) scale(1); opacity: 1; }      /* второй подскок */
+    88%  { transform: translateY(35px) scale(1,0.95); opacity: 1; } /* касается */
+    100% { transform: translateY(-90px) scale(0.5); opacity: 0; }   /* улетает вверх */
+  }
+
+  /* ============ 6. SUNBURST ============
+     Схлопнулась, остаются края лучиков (треугольники без середины), пульсируют и исчезают вращаясь по часовой */
+  .sunburst { animation: sunburstLife 6s ease-in-out infinite; }
+  @keyframes sunburstLife {
+    0%   { transform: scale(0) rotate(0deg); opacity: 0; }
+    13%  { transform: scale(1.15) rotate(45deg); opacity: 1; }
+    22%  { transform: scale(1) rotate(60deg); }
+    45%  { transform: scale(1.06) rotate(180deg); }
+    65%  { transform: scale(1) rotate(300deg); opacity: 1; }
+    72%  { transform: scale(0.3) rotate(330deg); opacity: 0; }
+    100% { transform: scale(0) rotate(360deg); opacity: 0; }
+  }
+  .sunburst-trail { animation: sunburstTrail 6s ease-in-out infinite; }
+  @keyframes sunburstTrail {
+    0%, 68%  { opacity: 0; transform: rotate(0deg) scale(0.8); }
+    74%      { opacity: 1; transform: rotate(20deg) scale(1); }
+    82%      { opacity: 1; transform: rotate(80deg) scale(1.15); }
+    90%      { opacity: 1; transform: rotate(140deg) scale(1); }
+    100%     { opacity: 0; transform: rotate(220deg) scale(0.6); }
+  }
+
+  /* ============ 7. DROP ============
+     Капля упала, образовала лужу. Лужа высыхает — уменьшается с боков */
+  .drop {
+    animation: dropFall 6s cubic-bezier(.5,0,.5,1) infinite;
+    transform-origin: top center;
+  }
+  @keyframes dropFall {
+    0%   { transform: translateY(-120%) scaleY(1.4) scaleX(0.7); opacity: 0; }
+    16%  { transform: translateY(0) scaleY(1) scaleX(1); opacity: 1; }
+    30%  { transform: translateY(0) scaleY(0.95) scaleX(1.05); }
+    50%  { transform: translateY(0) scaleY(1.03) scaleX(0.97); }
+    65%  { transform: translateY(0) scaleY(1); opacity: 1; }
+    72%  { transform: translateY(120%) scaleY(0.2) scaleX(1.3); opacity: 0; }
+    100% { transform: translateY(120%); opacity: 0; }
+  }
+  .drop-puddle {
+    animation: dropPuddle 6s cubic-bezier(.5,0,.5,1) infinite;
+    transform-origin: center;
+    transform-box: fill-box;
+  }
+  @keyframes dropPuddle {
+    0%, 68%  { opacity: 0; transform: scaleX(0) scaleY(0.5); }
+    72%      { opacity: 1; transform: scaleX(1.2) scaleY(0.8); } /* шлёп */
+    78%      { opacity: 1; transform: scaleX(1) scaleY(1); }     /* ровная лужа */
+    90%      { opacity: 1; transform: scaleX(0.5) scaleY(0.8); } /* высыхает */
+    100%     { opacity: 0; transform: scaleX(0.1) scaleY(0.5); }
+  }
+
+  /* ============ 8. FLOWER ============
+     Цветок закрылся (серединка), лепестки пульсируют и тают */
+  .flower-petals { animation: flowerBloom 6s ease-in-out infinite; }
+  .flower-center {
+    animation: flowerCenter 6s ease-in-out infinite;
+    transform-origin: center; transform-box: fill-box;
+  }
+  @keyframes flowerBloom {
+    0%   { transform: scale(0) rotate(-180deg); opacity: 0; }
+    18%  { transform: scale(1.1) rotate(0deg); opacity: 1; }
+    35%  { transform: scale(1) rotate(20deg); }
+    55%  { transform: scale(1.04) rotate(-20deg); }
+    65%  { transform: scale(1) rotate(0deg); opacity: 1; }
+    72%  { transform: scale(1.15) rotate(0deg); opacity: 1; } /* лепестки пульсируют */
+    78%  { transform: scale(0.9) rotate(0deg); opacity: 0.7; }
+    84%  { transform: scale(1.1) rotate(0deg); opacity: 0.4; }
+    95%, 100% { transform: scale(0.3) rotate(0deg); opacity: 0; }
+  }
+  @keyframes flowerCenter {
+    0%   { transform: scale(0); opacity: 0; }
+    18%  { transform: scale(1); opacity: 1; }
+    65%  { transform: scale(1); opacity: 1; }
+    72%, 100% { transform: scale(0); opacity: 0; } /* серединка схлопнулась раньше */
+  }
+
+  /* ============ 9. ASTERISK ============
+     Лучи схлопнулись, точка в центре улетает вверх — как у солнышка Claude */
+  .asterisk { animation: asteriskSpin 6s ease-in-out infinite; }
+  @keyframes asteriskSpin {
+    0%   { transform: scale(0) rotate(0deg); opacity: 0; }
+    12%  { transform: scale(1.25) rotate(30deg); opacity: 1; }
+    22%  { transform: scale(1) rotate(45deg); }
+    45%  { transform: scale(1.08) rotate(180deg); }
+    65%  { transform: scale(1) rotate(315deg); opacity: 1; }
+    72%, 100% { transform: scale(0) rotate(360deg); opacity: 0; }
+  }
+  .asterisk-trail { animation: asteriskTrail 6s ease-in-out infinite; }
+  @keyframes asteriskTrail {
+    0%, 68%  { opacity: 0; transform: scale(0) translate(0,0); }
+    74%      { opacity: 1; transform: scale(1) translate(0,0); }
+    88%      { opacity: 1; transform: scale(1) translate(0,-30px); }
+    100%     { opacity: 0; transform: scale(0.3) translate(0,-55px); }
+  }
+
+  /* ============ 10. RING ============
+     Кольцо закрылось, зрачок вырастает в снежинку-asterisk и улетает вправо */
+  .ring { animation: ringBlink 6s ease-in-out infinite; }
+  @keyframes ringBlink {
+    0%   { transform: scaleY(0); opacity: 0; }
+    13%  { transform: scaleY(1); opacity: 1; }
+    28%  { transform: scaleY(1); }
+    34%  { transform: scaleY(0.1); }
+    40%  { transform: scaleY(1); }
+    58%  { transform: scaleY(1); }
+    64%  { transform: scaleY(0.1); }
+    65%  { transform: scaleY(1); opacity: 1; }
+    72%, 100% { transform: scaleY(0); opacity: 0; }
+  }
+  .ring-pupil {
+    animation: ringPupil 6s ease-in-out infinite;
+    transform-origin: center; transform-box: fill-box;
+  }
+  @keyframes ringPupil {
+    0%, 68%  { opacity: 0; transform: scale(0) translate(0,0) rotate(0deg); }
+    73%      { opacity: 1; transform: scale(1) translate(0,0) rotate(0deg); } /* точка-зрачок */
+    80%      { opacity: 1; transform: scale(2.2) translate(0,0) rotate(45deg); } /* вырос в снежинку */
+    92%      { opacity: 1; transform: scale(2.2) translate(40px,0) rotate(180deg); } /* летит вправо вращаясь */
+    100%     { opacity: 0; transform: scale(0.8) translate(70px,0) rotate(270deg); }
+  }
+
+  /* ============ 11. ARCH ============
+     Дуга стёрлась, капля скатывается вниз с конца */
+  .arch {
+    stroke-dasharray: 500; stroke-dashoffset: 500;
+    animation: archDraw 6s ease-in-out infinite;
+  }
+  @keyframes archDraw {
+    0%   { stroke-dashoffset: 500; opacity: 0; }
+    18%  { stroke-dashoffset: 0; opacity: 1; }
+    45%  { stroke-dashoffset: 0; }
+    65%  { stroke-dashoffset: 0; opacity: 1; }
+    75%, 100% { stroke-dashoffset: -500; opacity: 0; }
+  }
+  .arch-trail { animation: archTrail 6s ease-in-out infinite; }
+  @keyframes archTrail {
+    0%, 65%  { opacity: 0; transform: translate(0,0) scale(0); }
+    72%      { opacity: 1; transform: translate(0,0) scale(1); }
+    90%      { opacity: 1; transform: translate(0,40px) scale(1); }
+    100%     { opacity: 0; transform: translate(0,60px) scale(0.3); }
+  }
+
+  /* ============ 12. PILLS ============
+     Три провалились, две боковые задержались, подпрыгнули и улетают в разные стороны */
+  .pill-1 { animation: pill1Bounce 6s ease-in-out infinite; transform-origin: center; transform-box: fill-box; }
+  .pill-2 { animation: pill2Bounce 6s ease-in-out infinite; transform-origin: center; transform-box: fill-box; }
+  .pill-3 { animation: pill3Bounce 6s ease-in-out infinite; transform-origin: center; transform-box: fill-box; }
+  @keyframes pill1Bounce {
+    0%   { transform: translateY(40px) scale(0); opacity: 0; }
+    15%  { transform: translateY(0) scale(1); opacity: 1; }
+    28%  { transform: translateY(-6px) scale(1.05); }
+    40%  { transform: translateY(0) scale(1); }
+    52%  { transform: translateY(-6px) scale(1.05); }
+    65%  { transform: translateY(0) scale(1); opacity: 1; }
+    70%  { transform: translateY(40px) scale(0); opacity: 0; } /* центральная проваливается */
+    100% { transform: translateY(40px) scale(0); opacity: 0; }
+  }
+  /* левая — задерживается и улетает влево-вверх */
+  @keyframes pill2Bounce {
+    0%   { transform: translateY(40px) scale(0); opacity: 0; }
+    15%  { transform: translateY(0) scale(1); opacity: 1; }
+    28%  { transform: translateY(-6px) scale(1.05); }
+    40%  { transform: translateY(0) scale(1); }
+    52%  { transform: translateY(-6px) scale(1.05); }
+    65%  { transform: translateY(0) scale(1); opacity: 1; }
+    72%  { transform: translateY(-18px) scale(1) rotate(-15deg); opacity: 1; } /* подпрыгнула */
+    92%  { transform: translate(-60px,-40px) scale(1) rotate(-60deg); opacity: 1; }
+    100% { transform: translate(-85px,-55px) scale(0.3) rotate(-90deg); opacity: 0; }
+  }
+  /* правая — задерживается и улетает вправо-вверх */
+  @keyframes pill3Bounce {
+    0%   { transform: translateY(40px) scale(0); opacity: 0; }
+    15%  { transform: translateY(0) scale(1); opacity: 1; }
+    28%  { transform: translateY(-6px) scale(1.05); }
+    40%  { transform: translateY(0) scale(1); }
+    52%  { transform: translateY(-6px) scale(1.05); }
+    65%  { transform: translateY(0) scale(1); opacity: 1; }
+    72%  { transform: translateY(-18px) scale(1) rotate(15deg); opacity: 1; }
+    92%  { transform: translate(60px,-40px) scale(1) rotate(60deg); opacity: 1; }
+    100% { transform: translate(85px,-55px) scale(0.3) rotate(90deg); opacity: 0; }
+  }
+
+  footer {
+    max-width: 1100px; margin: 60px auto 0;
+    font-family: ui-sans-serif, system-ui;
+    font-size: 12px; color: #999; text-align: center;
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <h1>Живые иконки <span style="font-style:italic; color:var(--blue);">— кастомные следы</span></h1>
+  <p>У каждой иконки свой характер ухода. Цикл ≈ 6 сек.</p>
+</header>
+
+<div class="divider"></div>
+
+<div class="grid">
+
+  <!-- 1. Squiggle -->
+  <div class="cell">
+    <svg viewBox="-10 -10 120 120">
+      <path class="squiggle" d="M 10 50 Q 20 20, 30 50 T 50 50 T 70 50 T 90 50"/>
+      <path class="squiggle-trail" d="M 10 50 Q 20 20, 30 50 T 50 50 T 70 50 T 90 50"/>
+    </svg>
+    <span class="label">squiggle</span>
+  </div>
+
+  <!-- 2. Blob -->
+  <div class="cell">
+    <svg viewBox="-10 -40 120 140">
+      <path class="icon blob" d="M50 8 C75 8, 92 28, 88 55 C84 80, 62 92, 42 88 C18 83, 8 60, 14 38 C20 18, 35 8, 50 8 Z"/>
+      <circle class="trail blob-trail" cx="50" cy="50" r="7"/>
+    </svg>
+    <span class="label">blob</span>
+  </div>
+
+  <!-- 3. Cloud -->
+  <div class="cell">
+    <svg viewBox="-10 -10 120 140">
+      <path class="icon cloud" d="M20 55 C10 55, 8 40, 20 38 C18 25, 35 20, 42 30 C48 18, 68 22, 68 35 C82 33, 88 50, 78 58 C82 70, 68 78, 58 72 C52 82, 32 80, 28 70 C14 72, 10 60, 20 55 Z"/>
+      <path class="trail rain-1" d="M35 68 C35 68, 30 76, 32 82 C34 88, 42 88, 42 80 C42 74, 35 68, 35 68 Z"/>
+      <path class="trail rain-2" d="M52 70 C52 70, 47 78, 49 84 C51 90, 59 90, 59 82 C59 76, 52 70, 52 70 Z"/>
+      <path class="trail rain-3" d="M69 68 C69 68, 64 76, 66 82 C68 88, 76 88, 76 80 C76 74, 69 68, 69 68 Z"/>
+    </svg>
+    <span class="label">cloud</span>
+  </div>
+
+  <!-- 4. Peanut -->
+  <div class="cell">
+    <svg viewBox="-30 -10 160 120">
+      <path class="icon peanut" d="M20 50 C18 30, 38 28, 45 42 C52 56, 72 52, 80 62 C86 74, 70 84, 55 78 C40 72, 22 72, 20 50 Z"/>
+      <path class="trail peanut-trail" d="M35 75 C34 68, 44 67, 47 72 C50 77, 58 75, 61 80 C63 85, 55 89, 48 87 C41 85, 36 82, 35 75 Z" transform="scale(0.45)" transform-origin="50 80"/>
+    </svg>
+    <span class="label">peanut</span>
+  </div>
+
+  <!-- 5. Character -->
+  <div class="cell">
+    <svg viewBox="-10 -30 120 140">
+      <g class="icon character-body">
+        <rect x="25" y="50" width="50" height="40" rx="2"/>
+        <path d="M25 90 A25 25 0 0 1 75 90 Z"/>
+      </g>
+      <circle class="icon character-head" cx="50" cy="30" r="20"/>
+    </svg>
+    <span class="label">character</span>
+  </div>
+
+  <!-- 6. Sunburst — края лучиков -->
+  <div class="cell">
+    <svg viewBox="-10 -10 120 120">
+      <path class="icon sunburst" d="M50 5 L56 18 L68 10 L68 24 L82 22 L76 34 L90 38 L80 48 L92 55 L80 62 L90 72 L76 76 L82 88 L68 86 L68 100 L56 92 L50 105 L44 92 L32 100 L32 86 L18 88 L24 76 L10 72 L20 62 L8 55 L20 48 L10 38 L24 34 L18 22 L32 24 L32 10 L44 18 Z" transform="scale(0.85) translate(9,3)"/>
+      <!-- 18 одинаковых треугольных кончиков на концах всех лучей -->
+      <g class="trail sunburst-trail">
+        <polygon points="50,6 46,18 54,18"/>
+        <polygon points="50,6 46,18 54,18" transform="rotate(20 50 50)"/>
+        <polygon points="50,6 46,18 54,18" transform="rotate(40 50 50)"/>
+        <polygon points="50,6 46,18 54,18" transform="rotate(60 50 50)"/>
+        <polygon points="50,6 46,18 54,18" transform="rotate(80 50 50)"/>
+        <polygon points="50,6 46,18 54,18" transform="rotate(100 50 50)"/>
+        <polygon points="50,6 46,18 54,18" transform="rotate(120 50 50)"/>
+        <polygon points="50,6 46,18 54,18" transform="rotate(140 50 50)"/>
+        <polygon points="50,6 46,18 54,18" transform="rotate(160 50 50)"/>
+        <polygon points="50,6 46,18 54,18" transform="rotate(180 50 50)"/>
+        <polygon points="50,6 46,18 54,18" transform="rotate(200 50 50)"/>
+        <polygon points="50,6 46,18 54,18" transform="rotate(220 50 50)"/>
+        <polygon points="50,6 46,18 54,18" transform="rotate(240 50 50)"/>
+        <polygon points="50,6 46,18 54,18" transform="rotate(260 50 50)"/>
+        <polygon points="50,6 46,18 54,18" transform="rotate(280 50 50)"/>
+        <polygon points="50,6 46,18 54,18" transform="rotate(300 50 50)"/>
+        <polygon points="50,6 46,18 54,18" transform="rotate(320 50 50)"/>
+        <polygon points="50,6 46,18 54,18" transform="rotate(340 50 50)"/>
+      </g>
+    </svg>
+    <span class="label">sunburst</span>
+  </div>
+
+  <!-- 7. Drop + лужа -->
+  <div class="cell">
+    <svg viewBox="-10 -10 120 130">
+      <path class="icon drop" d="M50 8 C50 8, 20 45, 22 68 C24 88, 76 88, 78 68 C80 45, 50 8, 50 8 Z"/>
+      <ellipse class="trail drop-puddle" cx="50" cy="90" rx="30" ry="5"/>
+    </svg>
+    <span class="label">drop</span>
+  </div>
+
+  <!-- 8. Flower -->
+  <div class="cell">
+    <svg viewBox="-10 -10 120 120">
+      <g class="icon flower-petals">
+        <ellipse cx="50" cy="20" rx="12" ry="18"/>
+        <ellipse cx="50" cy="80" rx="12" ry="18"/>
+        <ellipse cx="20" cy="50" rx="18" ry="12"/>
+        <ellipse cx="80" cy="50" rx="18" ry="12"/>
+        <ellipse cx="28" cy="28" rx="12" ry="14" transform="rotate(-45 28 28)"/>
+        <ellipse cx="72" cy="28" rx="12" ry="14" transform="rotate(45 72 28)"/>
+        <ellipse cx="28" cy="72" rx="12" ry="14" transform="rotate(45 28 72)"/>
+        <ellipse cx="72" cy="72" rx="12" ry="14" transform="rotate(-45 72 72)"/>
+      </g>
+      <circle class="icon flower-center" cx="50" cy="50" r="14"/>
+    </svg>
+    <span class="label">flower</span>
+  </div>
+
+  <!-- 9. Asterisk -->
+  <div class="cell">
+    <svg viewBox="-10 -10 120 120">
+      <g class="icon asterisk">
+        <rect x="44" y="8" width="12" height="84" rx="6"/>
+        <rect x="44" y="8" width="12" height="84" rx="6" transform="rotate(45 50 50)"/>
+        <rect x="44" y="8" width="12" height="84" rx="6" transform="rotate(90 50 50)"/>
+        <rect x="44" y="8" width="12" height="84" rx="6" transform="rotate(135 50 50)"/>
+      </g>
+      <circle class="trail asterisk-trail" cx="50" cy="50" r="8"/>
+    </svg>
+    <span class="label">asterisk</span>
+  </div>
+
+  <!-- 10. Ring -->
+  <div class="cell">
+    <svg viewBox="-10 -10 120 120">
+      <path class="icon ring" fill-rule="evenodd" d="M50 12 C78 12, 90 32, 88 52 C86 78, 60 92, 36 84 C14 76, 8 50, 18 32 C26 18, 38 12, 50 12 Z M50 38 C40 38, 34 46, 36 56 C38 66, 52 68, 60 60 C66 52, 62 38, 50 38 Z"/>
+      <!-- зрачок, который станет снежинкой -->
+      <g class="ring-pupil">
+        <rect class="icon" x="46" y="38" width="8" height="24" rx="4"/>
+        <rect class="icon" x="46" y="38" width="8" height="24" rx="4" transform="rotate(45 50 50)"/>
+        <rect class="icon" x="46" y="38" width="8" height="24" rx="4" transform="rotate(90 50 50)"/>
+        <rect class="icon" x="46" y="38" width="8" height="24" rx="4" transform="rotate(135 50 50)"/>
+      </g>
+    </svg>
+    <span class="label">ring</span>
+  </div>
+
+  <!-- 11. Arch -->
+  <div class="cell">
+    <svg viewBox="-10 -10 120 120">
+      <path class="arch" fill="none" stroke="var(--blue)" stroke-width="22" stroke-linecap="round" d="M20 85 L20 45 A25 25 0 0 1 70 45 L70 55"/>
+      <circle class="trail arch-trail" cx="70" cy="55" r="10"/>
+    </svg>
+    <span class="label">arch</span>
+  </div>
+
+  <!-- 12. Pills -->
+  <div class="cell">
+    <svg viewBox="-40 -30 180 150">
+      <ellipse class="icon pill-2" cx="25" cy="55" rx="14" ry="20"/>
+      <ellipse class="icon pill-1" cx="50" cy="55" rx="14" ry="20"/>
+      <ellipse class="icon pill-3" cx="75" cy="55" rx="14" ry="20"/>
+    </svg>
+    <span class="label">pills</span>
+  </div>
+
+</div>
+
+<footer>Каждый след — свой характер. Следи за уходом.</footer>
+
+</body>
+</html>

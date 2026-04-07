@@ -3,6 +3,7 @@ import { getImage } from 'astro:assets';
 import Layout from '../layouts/Layout.astro';
 import { Header } from '../components/Header';
 import { Hero } from '../components/Hero';
+import { AnimatedIcons } from '../components/AnimatedIcons';
 import { History } from '../components/History';
 import { About } from '../components/About';
 import { Projects } from '../components/Projects';
@@ -84,7 +85,8 @@ const pigletImages = [p0, p1, p2, p3, p4, p5].map(i => i.src);
   <main class="min-h-screen">
     <Header client:load logoSrc={logo.src} />
     <Hero   client:load logoMainSrc={logoMain.src} />
-    <History client:load />
+    <AnimatedIcons client:load />
+    {/* <History client:load />
     <About   client:load heroBgMirroredSrc={heroBgMirrored.src} />
     <Projects client:load stepaImages={stepaImages} pigletImages={pigletImages} />
     <Partnership client:load heroBgMirroredSrc={heroBgMirrored.src} />
@@ -93,6 +95,6 @@ const pigletImages = [p0, p1, p2, p3, p4, p5].map(i => i.src);
     <WhatWeDo client:load />
     <Team     client:load heroBgMirroredSrc={heroBgMirrored.src} team1Src={team1.src} team2Src={team2.src} />
     <Contacts client:load logoSrc={logo.src} />
-    <Footer   client:load />
+    <Footer   client:load /> */}
   </main>
 </Layout>
