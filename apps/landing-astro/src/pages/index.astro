@@ -3,6 +3,7 @@ import { getImage } from 'astro:assets';
 import Layout from '../layouts/Layout.astro';
 import { Header } from '../components/Header';
 import { Hero } from '../components/Hero';
+import { SilkWaves } from '../components/SilkWaves';
 import { History } from '../components/History';
 import { About } from '../components/About';
 import { Projects } from '../components/Projects';
@@ -83,7 +84,8 @@ const pigletImages = [p0, p1, p2, p3, p4, p5].map(i => i.src);
 <Layout>
   <main class="min-h-screen">
     <Header client:load logoSrc={logo.src} />
-    <Hero   client:load heroBgSrc={heroBg.src} logoMainSrc={logoMain.src} />
+    {/* <Hero   client:load heroBgSrc={heroBg.src} logoMainSrc={logoMain.src} /> */}
+    <SilkWaves client:load />
     <History client:load />
     <About   client:load heroBgMirroredSrc={heroBgMirrored.src} />
     <Projects client:load stepaImages={stepaImages} pigletImages={pigletImages} />
