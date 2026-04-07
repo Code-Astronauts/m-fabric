@@ -3,7 +3,6 @@ import { getImage } from 'astro:assets';
 import Layout from '../layouts/Layout.astro';
 import { Header } from '../components/Header';
 import { Hero } from '../components/Hero';
-import { SilkWaves } from '../components/SilkWaves';
 import { History } from '../components/History';
 import { About } from '../components/About';
 import { Projects } from '../components/Projects';
@@ -47,7 +46,7 @@ const PHOTO = { format: 'webp' as const, quality: 82 };
 const LOGO  = { format: 'webp' as const, quality: 90 };
 
 const [
-  heroBg, heroBgMirrored,
+  _heroBg, heroBgMirrored,
   logo, logoMain,
   team1, team2,
   s0, s5, s6, s7, s8, s9, s10, s11, s12, s13,
@@ -84,8 +83,7 @@ const pigletImages = [p0, p1, p2, p3, p4, p5].map(i => i.src);
 <Layout>
   <main class="min-h-screen">
     <Header client:load logoSrc={logo.src} />
-    {/* <Hero   client:load heroBgSrc={heroBg.src} logoMainSrc={logoMain.src} /> */}
-    <SilkWaves client:load />
+    <Hero   client:load logoMainSrc={logoMain.src} />
     <History client:load />
     <About   client:load heroBgMirroredSrc={heroBgMirrored.src} />
     <Projects client:load stepaImages={stepaImages} pigletImages={pigletImages} />
