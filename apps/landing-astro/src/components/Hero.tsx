@@ -7,27 +7,35 @@ export function Hero({ logoMainSrc }: { logoMainSrc: string }) {
     <>
       <style>{`
         @keyframes silkSky {
-          to { opacity: 1 }
+          0%   { opacity: 0 }
+          40%  { opacity: 0.3 }
+          100% { opacity: 1 }
         }
         @keyframes silk1In {
           0%   { opacity: 0; transform: translateX(-60%) translateY(30%) rotate(-8deg) scale(1.3) }
+          27%  { opacity: 0.15; transform: translateX(-40%) translateY(20%) rotate(-5deg) scale(1.2) }
           100% { opacity: 0.9; transform: translateX(0) translateY(0) rotate(0) scale(1) }
         }
         @keyframes silk2In {
           0%   { opacity: 0; transform: translateX(70%) translateY(-20%) rotate(12deg) scale(1.4) }
+          27%  { opacity: 0.12; transform: translateX(45%) translateY(-13%) rotate(8deg) scale(1.25) }
           100% { opacity: 0.85; transform: translateX(0) translateY(0) rotate(0) scale(1) }
         }
         @keyframes silk3In {
           0%   { opacity: 0; transform: translateX(-40%) translateY(60%) rotate(-5deg) scale(1.5) }
+          27%  { opacity: 0.1; transform: translateX(-26%) translateY(40%) rotate(-3deg) scale(1.35) }
           100% { opacity: 0.7; transform: translateX(0) translateY(0) rotate(0) scale(1) }
         }
         @keyframes silk4In {
           0%   { opacity: 0; transform: translateX(40%) translateY(-50%) rotate(8deg) scale(1.3) }
+          27%  { opacity: 0.08; transform: translateX(26%) translateY(-33%) rotate(5deg) scale(1.2) }
           100% { opacity: 0.6; transform: translateX(0) translateY(0) rotate(0) scale(1) }
         }
         @keyframes silkBeam {
-          0%   { transform: translateX(-100%) skewX(-15deg) }
-          100% { transform: translateX(300%) skewX(-15deg) }
+          0%   { transform: translate(-150%, -30%) skewX(-15deg) rotate(-8deg); opacity: 0 }
+          10%  { opacity: 0.6 }
+          90%  { opacity: 0.8 }
+          100% { transform: translate(300%, 20%) skewX(-15deg) rotate(-8deg); opacity: 0 }
         }
       `}</style>
 
@@ -50,7 +58,7 @@ export function Hero({ logoMainSrc }: { logoMainSrc: string }) {
               radial-gradient(ellipse at 80% 60%, rgba(41,82,255,0.2) 0%, transparent 50%)
             `,
             opacity: 0,
-            animation: "silkSky 2.5s 0.3s forwards ease-out",
+            animation: "silkSky 3s 0.3s forwards cubic-bezier(0.4,0,0.2,1)",
           }}
         />
 
@@ -65,10 +73,10 @@ export function Hero({ logoMainSrc }: { logoMainSrc: string }) {
             transformOrigin: "center",
             opacity: 0,
             mixBlendMode: "screen",
-            animation: "silk1In 3s 0.4s forwards cubic-bezier(0.2,0.8,0.2,1)",
+            animation: "silk1In 3.4s 0.4s forwards cubic-bezier(0.4,0,0.2,1)",
           }}
         >
-          <svg viewBox="0 0 1600 900" preserveAspectRatio="none" className="w-full h-full">
+          <svg viewBox="0 0 1600 900" preserveAspectRatio="none" overflow="visible" className="w-full h-full">
             <defs>
               <linearGradient id="hero-sw-g1" x1="0" x2="1" y1="0" y2="1">
                 <stop offset="0" stopColor="#4a7bff" stopOpacity="0" />
@@ -76,7 +84,7 @@ export function Hero({ logoMainSrc }: { logoMainSrc: string }) {
                 <stop offset="1" stopColor="#1a3aa8" stopOpacity="0" />
               </linearGradient>
             </defs>
-            <path d="M -100 500 Q 300 300 700 480 T 1700 420 L 1700 900 L -100 900 Z" fill="url(#hero-sw-g1)" />
+            <path d="M -2500 1400 Q -900 900 -100 500 Q 300 300 700 480 T 1700 420 T 3300 260 T 4600 300 L 4600 2000 L -2500 2000 Z" fill="url(#hero-sw-g1)" />
           </svg>
         </div>
 
@@ -91,10 +99,10 @@ export function Hero({ logoMainSrc }: { logoMainSrc: string }) {
             transformOrigin: "center",
             opacity: 0,
             mixBlendMode: "screen",
-            animation: "silk2In 3.2s 0.7s forwards cubic-bezier(0.2,0.8,0.2,1)",
+            animation: "silk2In 3.7s 0.8s forwards cubic-bezier(0.4,0,0.2,1)",
           }}
         >
-          <svg viewBox="0 0 1600 900" preserveAspectRatio="none" className="w-full h-full">
+          <svg viewBox="0 0 1600 900" preserveAspectRatio="none" overflow="visible" className="w-full h-full">
             <defs>
               <linearGradient id="hero-sw-g2" x1="0" x2="1" y1="0" y2="1">
                 <stop offset="0" stopColor="#2952ff" stopOpacity="0" />
@@ -102,7 +110,7 @@ export function Hero({ logoMainSrc }: { logoMainSrc: string }) {
                 <stop offset="1" stopColor="#0a1650" stopOpacity="0" />
               </linearGradient>
             </defs>
-            <path d="M -100 550 Q 400 350 800 540 T 1700 480 L 1700 900 L -100 900 Z" fill="url(#hero-sw-g2)" />
+            <path d="M -2500 1500 Q -1100 950 -100 550 Q 400 350 800 540 T 1700 480 T 3300 320 T 4600 370 L 4600 2000 L -2500 2000 Z" fill="url(#hero-sw-g2)" />
           </svg>
         </div>
 
@@ -117,10 +125,10 @@ export function Hero({ logoMainSrc }: { logoMainSrc: string }) {
             transformOrigin: "center",
             opacity: 0,
             mixBlendMode: "screen",
-            animation: "silk3In 3.4s 1s forwards cubic-bezier(0.2,0.8,0.2,1)",
+            animation: "silk3In 3.9s 1.1s forwards cubic-bezier(0.4,0,0.2,1)",
           }}
         >
-          <svg viewBox="0 0 1600 900" preserveAspectRatio="none" className="w-full h-full">
+          <svg viewBox="0 0 1600 900" preserveAspectRatio="none" overflow="visible" className="w-full h-full">
             <defs>
               <linearGradient id="hero-sw-g3" x1="0" x2="1" y1="0" y2="1">
                 <stop offset="0" stopColor="#1a3aa8" stopOpacity="0" />
@@ -128,7 +136,7 @@ export function Hero({ logoMainSrc }: { logoMainSrc: string }) {
                 <stop offset="1" stopColor="#05092a" stopOpacity="0" />
               </linearGradient>
             </defs>
-            <path d="M -100 620 Q 500 420 900 600 T 1700 560 L 1700 900 L -100 900 Z" fill="url(#hero-sw-g3)" />
+            <path d="M -2500 1600 Q -1300 1020 -100 620 Q 500 420 900 600 T 1700 560 T 3300 400 T 4600 440 L 4600 2000 L -2500 2000 Z" fill="url(#hero-sw-g3)" />
           </svg>
         </div>
 
@@ -143,10 +151,10 @@ export function Hero({ logoMainSrc }: { logoMainSrc: string }) {
             transformOrigin: "center",
             opacity: 0,
             mixBlendMode: "screen",
-            animation: "silk4In 3.6s 1.3s forwards cubic-bezier(0.2,0.8,0.2,1)",
+            animation: "silk4In 4.2s 1.4s forwards cubic-bezier(0.4,0,0.2,1)",
           }}
         >
-          <svg viewBox="0 0 1600 900" preserveAspectRatio="none" className="w-full h-full">
+          <svg viewBox="0 0 1600 900" preserveAspectRatio="none" overflow="visible" className="w-full h-full">
             <defs>
               <linearGradient id="hero-sw-g4" x1="0" x2="1" y1="0" y2="1">
                 <stop offset="0" stopColor="#0a1650" stopOpacity="0" />
@@ -154,7 +162,7 @@ export function Hero({ logoMainSrc }: { logoMainSrc: string }) {
                 <stop offset="1" stopColor="#01030f" stopOpacity="0" />
               </linearGradient>
             </defs>
-            <path d="M -100 700 Q 600 500 1000 680 T 1700 640 L 1700 900 L -100 900 Z" fill="url(#hero-sw-g4)" />
+            <path d="M -2500 1700 Q -1500 1100 -100 700 Q 600 500 1000 680 T 1700 640 T 3300 480 T 4600 520 L 4600 2000 L -2500 2000 Z" fill="url(#hero-sw-g4)" />
           </svg>
         </div>
 
@@ -162,20 +170,19 @@ export function Hero({ logoMainSrc }: { logoMainSrc: string }) {
         <div
           className="absolute pointer-events-none z-0"
           style={{
-            top: 0,
-            left: "20%",
+            top: "-20%",
+            left: 0,
             width: 600,
-            height: "100%",
+            height: "140%",
             background:
               "linear-gradient(105deg, transparent 45%, rgba(120,170,255,0.25) 50%, transparent 55%)",
-            transform: "translateX(-100%) skewX(-15deg)",
-            animation: "silkBeam 2s 1.8s forwards ease-out",
+            transform: "translate(-150%, -30%) skewX(-15deg) rotate(-8deg)",
+            animation: "silkBeam 2.65s 2.6s forwards ease-in-out",
           }}
         />
 
-        {/* Content */}
+        {/* Content — hidden for animation debug
         <div className="relative z-10 h-full max-w-[1341px] w-full mx-auto px-[38px] sm:px-10 lg:px-12 pt-[72px] lg:pt-[96px] flex flex-col lg:flex-row items-center justify-center gap-10 lg:gap-0">
-          {/* Left: text */}
           <div className="lg:flex-1 flex flex-col gap-5 lg:gap-6 max-w-[580px]">
             <div className="flex flex-col gap-2">
               <h1 className="font-display font-bold text-white text-[36px] leading-[1.1] sm:text-5xl lg:text-[60px]">
@@ -206,7 +213,6 @@ export function Hero({ logoMainSrc }: { logoMainSrc: string }) {
             </div>
           </div>
 
-          {/* Right: logo card */}
           <div className="hidden lg:flex shrink-0 ml-auto">
             <div className="bg-white/10 rounded-2xl p-5 backdrop-blur-sm">
               <img
@@ -219,6 +225,7 @@ export function Hero({ logoMainSrc }: { logoMainSrc: string }) {
             </div>
           </div>
         </div>
+        */}
       </section>
     </>
   );
